@@ -1,0 +1,10 @@
+@use  "../../../node_modules/bootstrap/scss/bootstrap.scss" with (
+    $primary: rgb(204, 156, 117),
+    // $body-bg: rgb(253, 210, 191),   
+    $body-bg: rgb(255, 255, 255),   
+    
+);
+
+.card {
+    background-color: rgb(128, 154, 111);
+}

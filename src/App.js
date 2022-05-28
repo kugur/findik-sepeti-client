@@ -1,10 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
-import {Dashboard} from './features/dashboard/dashboard'
+import { Dashboard } from './features/dashboard/dashboard'
+import { Detail } from './features/detail/detail';
+import { Cart } from './features/cart/Cart';
+import {Login} from './features/login/Login';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <Dashboard/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />}> 
+        </Route>
+        <Route path=":product/:cost" element={<Detail />}></Route>
+        <Route path="cart" element={<Cart />}></Route>
+        <Route path="login" element={<Login/>}></Route>
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 // function App() {
