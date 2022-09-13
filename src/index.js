@@ -8,7 +8,7 @@ import './index.css';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './assets/css/style.css'
+import './assets/scss/style.css'
 
 const container = document.getElementById('root');
 const root = createRoot(container);

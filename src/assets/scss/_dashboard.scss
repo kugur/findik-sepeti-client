@@ -44,10 +44,6 @@ header {
     background-color: #666666;
 }
 
-.findikCard {
-    width: '18rem';
-}
-
 .detailCotainer {
     display: flex;
     align-items: center;
@@ -82,6 +78,52 @@ header {
     width: 100%;
     margin: 0 auto;
     padding: 40px 0 56px;
+
+    .nav-tabs {
+        padding: 0px;
+        justify-content: space-between !important;
+        display: flex;
+
+        .nav-link {
+            width: 100% !important;
+            height: 48px !important;
+            color: #333333;
+            background-color: #f2f2f2;
+            border-radius: 3px 3px 0 0;
+            border: none;
+            border-bottom: none;
+            display: inline-block !important;
+            position: relative;
+            
+        }
+
+        .nav-link.active {
+                color: #f27a1a !important;
+                background-color: #fff !important;
+                border: 1px solid rgb(204, 156, 117);
+                border-bottom: 0;
+        }
+
+        .nav-item {
+            width: 49%;
+        }
+    }
+
+    .loginForm {
+        width: 80%;
+    }
+
+    // .nav-tabs .nav-link.active {
+       
+    // }
+   
+    // .nav-tabs .nav-link {
+       
+    // }
+
+    // .nav-item {
+    //     width: 49%;
+    // }
 }
 
 .loginDialog {
@@ -95,11 +137,4 @@ header {
         margin-bottom: 0px !important;
         border-color: bootstrap.$primary;
     }
-
-    .nav-link:active {
-        border-color: bootstrap.$primary;
-    }
 }
-
-
-
