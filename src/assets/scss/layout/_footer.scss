@@ -1,0 +1,9 @@
+@use './variables' as variables;
+
+.footer {
+    background-color: variables.$primary;
+    height: 3em;
+    align-content: center;
+    justify-content: center;
+    padding: 0.3em;
+}

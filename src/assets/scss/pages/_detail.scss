@@ -1,0 +1,20 @@
+.detailWrapper {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  .detailCotainer {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .imageContainer {
+
+    }
+
+    .infoContainer {
+      
+    }
+  }
+
+}

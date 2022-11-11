@@ -1,36 +1,34 @@
 import React, { Fragment } from "react";
-import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button, Stack, Row, Col, Card } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Stack, Col } from "react-bootstrap";
 import findikBackground from '../../assets/imgs/deneme.jpg'
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from "../../components/Card/CustomCard";
-
+import {TopNavigation} from "../../components/topNavigationBar";
+import { Footer } from "../../layouts/Footer";
 
 export const Dashboard = () => {
     const navigate = useNavigate();
 
     return (
         <Fragment>
-            <Navbar bg="light" expand="lg" className="dashboard">
+            <TopNavigation></TopNavigation>
+            {/* <Navbar bg="light" expand="lg" className="dashboard">
                 <Container  >
                     <Navbar.Brand href="#" >Findik Sepeti</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll" className="justify-content-md-center">
-                        <Form className="d-flex justify-center">
-                            <FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
-                        </Form>
+                        <Nav className="me-auto">
+                        <Nav.Link href="login">Home</Nav.Link>
+                        <Nav.Link href="processedNuts">Islenmis Findik</Nav.Link>
+                        <Nav.Link href="raw">Islenmemis Findik</Nav.Link>
+                        </Nav>
                     </Navbar.Collapse>
                     <Stack direction="horizontal" gap={1} className='m-2' >
                         <Button variant="outline-secondary">Log in</Button>
                         <Button variant="secondary" >Sepet</Button>
                     </Stack>
                 </Container>
-            </Navbar>
+            </Navbar> */}
             <header className="bg-dark py-5 bg-image">
                 <div className="container px-4 px-lg-5 my-5">
                     <div className="text-center text-white">
@@ -45,10 +43,10 @@ export const Dashboard = () => {
                     <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                         <Col className="mb-5">
-                            <CustomCard image={findikBackground}></CustomCard>
+                            <CustomCard image={findikBackground} id="1"></CustomCard>
                         </Col>
                         <Col className="mb-5">
-                            <CustomCard image={findikBackground}>
+                            <CustomCard image={findikBackground} id="2">
 
                             </CustomCard>
                             {/* <Card className="findikCard">
@@ -64,7 +62,7 @@ export const Dashboard = () => {
                             </Card> */}
                         </Col>
                         <Col className="mb-5">
-                            <CustomCard image={findikBackground}></CustomCard>
+                            <CustomCard image={findikBackground} id="3"></CustomCard>
                         </Col>
 
                     </div>
@@ -72,6 +70,7 @@ export const Dashboard = () => {
                 </Container>
 
             </section>
+           <Footer></Footer>
         </Fragment>
     )
 

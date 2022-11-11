@@ -1,0 +1,11 @@
+
+$primary: rgb(204, 156, 117);
+
+@use  "../../../../node_modules/bootstrap/scss/bootstrap.scss" with (
+    $primary: $primary,
+    // $body-bg: rgb(253, 210, 191),   
+    $body-bg: rgb(255, 255, 255),   
+    
+);
+
+
