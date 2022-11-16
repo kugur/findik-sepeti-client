@@ -1,5 +1,9 @@
 
 $primary: rgb(204, 156, 117);
+$secondary: rgb(128, 154, 111);
+$thirdary: rgb(204, 156, 117);
+$fourdary: rgb(213, 216, 181);
+$font-color: rgb(102 66 36);
 
 @use  "../../../../node_modules/bootstrap/scss/bootstrap.scss" with (
     $primary: $primary,

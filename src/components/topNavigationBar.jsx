@@ -6,7 +6,7 @@ export const TopNavigation = () => {
     return (
         <Navbar bg="light" expand="lg" className="dashboard">
             <Container  >
-                <Navbar.Brand href="#" >Findik Sepeti</Navbar.Brand>
+                <Navbar.Brand href="/" >Findik Sepeti</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll" className="justify-content-md-center">
                     <Nav className="me-auto">

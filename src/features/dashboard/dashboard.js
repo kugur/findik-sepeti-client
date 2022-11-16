@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
-import { Navbar, Container, Nav, Button, Stack, Col } from "react-bootstrap";
+import { Container, Col } from "react-bootstrap";
 import findikBackground from '../../assets/imgs/deneme.jpg'
 import { useNavigate } from 'react-router-dom';
 import { CustomCard } from "../../components/Card/CustomCard";
 import {TopNavigation} from "../../components/topNavigationBar";
 import { Footer } from "../../layouts/Footer";
+import { Header } from "../../layouts/Header";
 
 export const Dashboard = () => {
     const navigate = useNavigate();
@@ -29,14 +30,15 @@ export const Dashboard = () => {
                     </Stack>
                 </Container>
             </Navbar> */}
-            <header className="bg-dark py-5 bg-image">
+            <Header></Header>
+            {/* <header className="bg-dark py-5 bg-image">
                 <div className="container px-4 px-lg-5 my-5">
                     <div className="text-center text-white">
                         <h1 className="display-4 fw-bolder">Shop in style</h1>
                         <p className="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
                     </div>
                 </div>
-            </header>
+            </header> */}
 
             <section className="py-5 dashboardSection">
                 <Container className="container px-4 px-lg-5 mt-5 dashboardElements">
