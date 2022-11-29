@@ -10,20 +10,24 @@
   .detailWrapper {
     display: flex;
     align-items: center;
+    min-height: 50%;
 
 
 
     .imageContainer {
       flex: 1;
-      margin-right: 5px;
+      // margin-right: 5px;
       border-style: solid;
+      border-color: variables.$primary;
       display: flex;
       justify-content: center;
       padding: 20px;
+      height: 100%;
 
         img {
          height: auto;
          width: 90%;
+         object-fit:scale-down;
         }
     }
 
@@ -35,6 +39,14 @@
       flex: 1;
       padding-left: 50px;
       align-self: flex-start;
+    }
+
+    .buttonWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-inline: 1em;
+      margin-top: 2em;
     }
   }
 

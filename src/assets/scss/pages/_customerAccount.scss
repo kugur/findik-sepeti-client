@@ -1,0 +1,11 @@
+.customerAccount {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .customerCointainer {
+        height: 100%;
+        background-color: red;
+    }
+}

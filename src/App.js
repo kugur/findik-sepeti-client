@@ -6,6 +6,7 @@ import { Detail } from './features/detail/detail';
 import { Cart } from './features/cart/Cart';
 import {Login} from './features/login/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CustomerAccount } from 'features/customerAccount/customerAccount';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path=":product/:cost" element={<Detail />}></Route>
         <Route path="cart" element={<Cart />}></Route>
         <Route path="login" element={<Login/>}></Route>
+        <Route path="user" element={<CustomerAccount/>}></Route>
       </Routes>
     </BrowserRouter>
 

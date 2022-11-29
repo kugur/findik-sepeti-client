@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as variables;
+
+.numberInput {
+
+    display: flex;
+    align-items: center;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+    }
+
+    input {
+        width: 3em;
+        border-radius: 0.7em;
+        margin-inline: 0.3em;
+        background-color: variables.$thirdary;
+        color: variables.$primary;
+        text-align: center;
+        font-weight: 600;
+        border-style: solid;
+
+        &:focus-visible {
+            outline: 2px solid variables.$primary;
+        }
+    }
+
+    .increaseButton, .decreaseButton {
+        color: variables.$primary;
+    }
+
+}
