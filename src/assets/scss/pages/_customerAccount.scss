@@ -1,11 +1,19 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
 .customerAccount {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color:  variables.$secondary;
 
     .customerCointainer {
         height: 100%;
-        background-color: red;
+        max-width: 60%;
+        
+
+        .userInput {
+            margin-block: 1em;
+        }
     }
 }

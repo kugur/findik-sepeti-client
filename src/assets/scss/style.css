@@ -11094,10 +11094,14 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgb(128, 154, 111);
 }
 .customerAccount .customerCointainer {
   height: 100%;
-  background-color: red;
+  max-width: 60%;
+}
+.customerAccount .customerCointainer .userInput {
+  margin-block: 1em;
 }
 
 .findikCard {
