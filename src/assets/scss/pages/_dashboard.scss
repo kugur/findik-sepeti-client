@@ -1,5 +1,6 @@
 @use  "../../../../node_modules/bootstrap/scss/bootstrap.scss"  as bootstrap;
 @use "../layout/header";
+@use "/src/assets/scss/abstracts/variables" as variables;
 
 $base-color: #c6538c;
 
@@ -8,6 +9,10 @@ $base-color: #c6538c;
    .navbar-brand {
        color:red;
    }   
+}
+
+.dashboardSection {
+    background-color: variables.$secondary;
 }
 
 header {

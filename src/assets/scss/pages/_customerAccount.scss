@@ -5,15 +5,36 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color:  variables.$secondary;
+    background-color: variables.$secondary;
 
-    .customerCointainer {
+    .customerContainer {
         height: 100%;
         max-width: 60%;
-        
+        margin-top: 5em;
 
-        .userInput {
+        .customerTitle {
+            font-weight: 600;
+        }
+
+        .customerGroup {
             margin-block: 1em;
+
+            label {
+                font-weight: 600;
+            }
+
+            .inputArea,
+            input:-webkit-autofill,
+            input:indeterminate  {
+                background-color: variables.$primary !important;
+                color: white;
+                transition: background-color 500000s ease-in-out 0s,  color 500000s ease-in-out 0s;
+            }
+        }
+
+        .genderLabel {
+            margin-right: 2em;
+            font-weight: 600;
         }
     }
 }
