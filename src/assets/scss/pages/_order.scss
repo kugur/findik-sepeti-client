@@ -1,0 +1,82 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+.orderContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 100vh;
+    background-color: variables.$secondary;
+
+    .orderWrapper {
+        margin-top: 5em;
+        margin-inline: 5em;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .orderSectionWrapper {
+            display: block;     
+        }
+
+        .orderSection {
+            margin-top: 2em;
+            height: 10em;
+            border: solid;
+
+            .orderHeader {
+                height: 40%;
+                background-color: variables.$primary;
+                border-bottom: double;
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                width: 100%;
+                padding-left: 1em;
+                padding-top: 0.2em;
+                
+                .headerCell {
+                    .cellTitle {
+                        color: variables.$font-color-light;
+                    }
+
+                    .cellValue {
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .orderBody {
+                height: 60%;
+                background-color: variables.$card-color;
+                display: inline-flex;
+                width: 100%;
+                justify-content: space-between;
+
+                .productContainer {
+                    height: 100%;
+                    width: auto;
+                    display: flex;
+
+                    .imgWrapper {
+                        height: 100%;
+                        width: auto;
+                        padding: 1em;
+                    }
+                }
+
+                .productDesc {
+                    margin: 1em;
+                }
+
+                .buttonList {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2em;
+                    margin-inline: 0.2em;
+                }
+            }
+        }
+    }
+
+    
+}

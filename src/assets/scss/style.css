@@ -11127,6 +11127,72 @@ header {
   font-weight: 600;
 }
 
+.orderContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100vh;
+  background-color: rgb(128, 154, 111);
+}
+.orderContainer .orderWrapper {
+  margin-top: 5em;
+  margin-inline: 5em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.orderContainer .orderWrapper .orderSectionWrapper {
+  display: block;
+}
+.orderContainer .orderWrapper .orderSection {
+  margin-top: 2em;
+  height: 10em;
+  border: solid;
+}
+.orderContainer .orderWrapper .orderSection .orderHeader {
+  height: 40%;
+  background-color: rgb(102, 66, 36);
+  border-bottom: double;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 100%;
+  padding-left: 1em;
+  padding-top: 0.2em;
+}
+.orderContainer .orderWrapper .orderSection .orderHeader .headerCell .cellTitle {
+  color: rgb(217, 217, 217);
+}
+.orderContainer .orderWrapper .orderSection .orderHeader .headerCell .cellValue {
+  font-weight: 600;
+}
+.orderContainer .orderWrapper .orderSection .orderBody {
+  height: 60%;
+  background-color: rgb(90, 114, 75);
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.orderContainer .orderWrapper .orderSection .orderBody .productContainer {
+  height: 100%;
+  width: auto;
+  display: flex;
+}
+.orderContainer .orderWrapper .orderSection .orderBody .productContainer .imgWrapper {
+  height: 100%;
+  width: auto;
+  padding: 1em;
+}
+.orderContainer .orderWrapper .orderSection .orderBody .productDesc {
+  margin: 1em;
+}
+.orderContainer .orderWrapper .orderSection .orderBody .buttonList {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  margin-inline: 0.2em;
+}
+
 .findikCard {
   width: "18rem";
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
