@@ -11079,6 +11079,12 @@ header {
   margin: 0 auto;
   padding: 40px 0 56px;
 }
+.loginContainer .error {
+  color: rgb(221, 6, 26);
+}
+.loginContainer .loginForm {
+  width: 70%;
+}
 
 .loginDialog .tab-content {
   border-bottom: 1px solid rgb(102, 66, 36);

@@ -1,9 +1,37 @@
 import { TopNavigation } from "components/topNavigationBar";
 import { Footer } from "layouts/Footer";
-import { Fragment, React } from "react";
+import { Fragment, React, useEffect } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
 export const CustomerAccount = (params) => {
+    useEffect(() => {
+        console.log("useEffect has been called.");
+        console.log("process env ::", "http://" + process.env.REACT_APP_SERVER_URL + "/users");
+        const myHeaders = new Headers();
+
+     
+        fetch("http://" + process.env.REACT_APP_SERVER_URL + "/users", {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH',
+                'Access-Control-Allow-Headers': '*',
+            },
+        })
+            .then(function (response) {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                 
+                }
+            })
+            .then(function (data) {
+                // Do something with the data, like store it in a local variable
+                console.log("users data ", data);
+            });
+
+    }, []);
     return (
         <Fragment>
             <div className="customerAccount">

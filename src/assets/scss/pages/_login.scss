@@ -1,0 +1,41 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+@use "../../../../node_modules/bootstrap/scss/bootstrap.scss" as bootstrap;
+
+.loginContainer {
+    align-content: center;
+    justify-content: center;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 0 56px;
+
+    .error {
+        color: variables.$font-color-error;
+    }
+
+    .loginForm {
+        width: 70%;
+    }
+}
+
+.loginDialog {
+    .tab-content {
+        border-bottom: 1px solid bootstrap.$primary;
+        border-left: 1px solid bootstrap.$primary;
+        border-right: 1px solid bootstrap.$primary;
+    }
+
+    .nav-tabs {
+        margin-bottom: 0px !important;
+        border-color: bootstrap.$primary;
+    }
+
+    .nav-link:active {
+        border-color: bootstrap.$primary;
+    }
+}

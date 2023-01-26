@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import { Dashboard } from './features/dashboard/dashboard'
@@ -8,8 +8,13 @@ import { Login } from './features/login/Login';
 import { Order } from 'features/orders/order';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CustomerAccount } from 'features/customerAccount/customerAccount';
+import { UserContext } from 'app/UserContext';
+
 function App() {
+  const [user, setUser] = useState({});
+
   return (
+    <UserContext.Provider value={{user, setUser}}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />}>
@@ -17,10 +22,11 @@ function App() {
         <Route path=":product/:cost" element={<Detail />}></Route>
         <Route path="cart" element={<Cart />}></Route>
         <Route path="login" element={<Login />}></Route>
-        <Route path="user" element={<CustomerAccount />}></Route>
+        <Route path="users" element={<CustomerAccount />}></Route>
         <Route path="orders" element={<Order />}></Route>
       </Routes>
     </BrowserRouter>
+    </UserContext.Provider>
 
   );
 }
