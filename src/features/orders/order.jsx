@@ -1,10 +1,13 @@
 import { TopNavigation } from "components/topNavigationBar";
 import { Footer } from "layouts/Footer";
-import { Fragment, React } from "react";
+import { Fragment, React, useEffect } from "react";
 import findikImage from "assets/imgs/deneme.jpg";
 import { Button } from "react-bootstrap";
 
 export const Order = (params) => {
+    useEffect(() => {
+        console.log(`[Order] params: ${params}`);
+    })
     return (
         <Fragment>
             <div className="orderContainer">

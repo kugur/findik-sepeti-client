@@ -5,6 +5,7 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import { CustomToastContainer } from 'components/Common/Toaster';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,11 +16,12 @@ const root = createRoot(container);
 
 
 root.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
       <App/>
+      <CustomToastContainer></CustomToastContainer>
     </Provider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

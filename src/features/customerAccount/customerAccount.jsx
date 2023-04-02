@@ -2,75 +2,161 @@ import { TopNavigation } from "components/topNavigationBar";
 import { Footer } from "layouts/Footer";
 import { Fragment, React, useEffect } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Formik } from "formik";
+import { useContext } from "react";
+import { UserContext, isPreUser } from "app/UserProvider";
+import { useState } from "react";
+import httpClientWrapper from "components/Common/HttpClientWrapper";
+import { Gender } from "helpers/Genders";
+import { Toaster } from "components/Common/Toaster";
 
-export const CustomerAccount = (params) => {
-    useEffect(() => {
-        console.log("useEffect has been called.");
-        console.log("process env ::", "http://" + process.env.REACT_APP_SERVER_URL + "/users");
-        const myHeaders = new Headers();
+const States = {
+  NEW: "New",
+  UPDATE: "Update",
+};
 
-     
-        fetch("http://" + process.env.REACT_APP_SERVER_URL + "/users", {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH',
-                'Access-Control-Allow-Headers': '*',
-            },
-        })
-            .then(function (response) {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                 
-                }
-            })
-            .then(function (data) {
-                // Do something with the data, like store it in a local variable
-                console.log("users data ", data);
-            });
+const CustomerAccount = (params) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
+  const [currentState, setCurrentState] = useState(
+    isPreUser(user) ? States.NEW : States.UPDATE
+  );
+  console.log(isPreUser);
+  console.log(`[CustomerAccount] params :: ${params}`);
 
-    }, []);
-    return (
-        <Fragment>
-            <div className="customerAccount">
-                <TopNavigation></TopNavigation>
-                <Container className="customerContainer">
-                    <h2 className="customerTitle">Kullanici Bilgileri</h2>
-                    <Form>
-                        <fieldset>
-                            <Form.Group className="customerGroup" controlId="name">
-                                <Form.Label>Isim</Form.Label>
-                                <Form.Control type="text" className="inputArea"></Form.Control>
-                            </Form.Group>
-                            <Form.Group className="customerGroup" controlId="lastName">
-                                <Form.Label>Soyad</Form.Label>
-                                <Form.Control type="text" className="inputArea"></Form.Control>
-                            </Form.Group>
+  const updateUser = (values) => {
+    console.log(`Submitted values ${JSON.stringify(values)}`);
+    values.username = values.email;
 
-                            <div key="inline-checkbox">
-                                <Form.Label className="genderLabel">Cinsiyet: </Form.Label>
-                                <Form.Check inline name="gender" type="radio" id="male" label="Erkek"></Form.Check>
-                                <Form.Check inline name="gender" type="radio" id="female" label="Kadin"></Form.Check>
-                            </div>
-                            
-                            <Form.Group className="customerGroup" controlId="email">
-                                <Form.Label>E-posta adresi</Form.Label>
-                                <Form.Control type="email" className="inputArea"></Form.Control>
-                            </Form.Group>
+    httpClientWrapper.put(
+      "/users",
+      values,
+      function (response) {
+        console.log(`Users update response ${response}`);
+        setUser(response);
+        Toaster.info("Basarili sekilde guncellendi");
+        navigate("/");
+      },
+      function (error) {
+        Toaster.error("Guncellenemedi, hata oldu!");
+        console.log(`Users update error ${error}`);
+      }
+    );
+  };
 
-                            <Form.Group className="customerGroup" controlId="address">
-                                <Form.Label>Adres</Form.Label>
-                                <Form.Control as="textarea" row={3} className="inputArea"></Form.Control>
-                            </Form.Group>
+  useEffect(() => {
+    console.log(`[customerAccount] ${user.email}`);
+    setCurrentState(isPreUser(user) ? States.NEW : States.UPDATE);
+  }, [user.email]);
 
-                        </fieldset>
-                        <Button type="submint">Guncelle</Button>
-                    </Form>
-                </Container>
-                <Footer></Footer>
-            </div>
-        </Fragment>
-    )
-}
+  return (
+    <Fragment>
+      <div className="customerAccount">
+        <TopNavigation></TopNavigation>
+        <Container className="customerContainer">
+          <h2 className="customerTitle">
+            {currentState === States.NEW ? "Kaydi tamamla" : "Kisisel Bilgiler"}
+          </h2>
+          <Formik
+            enableReinitialize
+            initialValues={{
+              email: user.email || "",
+              firstName: user.firstName || "",
+              lastName: user.lastName || "",
+              address: user.address || "",
+              gender: user.gender,
+            }}
+            onSubmit={updateUser}
+          >
+            {({ handleSubmit, handleChange, handleBlur, values }) => (
+              <Form onSubmit={handleSubmit}>
+                <fieldset>
+                  <Form.Group className="customerGroup" controlId="name">
+                    <Form.Label>Isim</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="firstName"
+                      className="inputArea"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.firstName}
+                    ></Form.Control>
+                  </Form.Group>
+                  <Form.Group className="customerGroup" controlId="lastName">
+                    <Form.Label>Soyad</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="lastName"
+                      className="inputArea"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      value={values.lastName}
+                    ></Form.Control>
+                  </Form.Group>
+
+                  <div key="inline-checkbox">
+                    <Form.Label className="genderLabel">Cinsiyet: </Form.Label>
+                    <Form.Check
+                      inline
+                      name="gender"
+                      type="radio"
+                      id="male"
+                      label="Erkek"
+                      value={Gender.Male}
+                      checked={Gender.Male === values.gender}
+                      onChange={handleChange}
+                    ></Form.Check>
+                    <Form.Check
+                      inline
+                      name="gender"
+                      type="radio"
+                      id="female"
+                      value={Gender.Female}
+                      checked={Gender.Female === values.gender}
+                      label="Kadin"
+                      onChange={handleChange}
+                    ></Form.Check>
+                  </div>
+
+                  <Form.Group className="customerGroup" controlId="email">
+                    <Form.Label>E-posta adresi</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      className="inputArea"
+                      value={values.email}
+                      disabled
+                    ></Form.Control>
+                  </Form.Group>
+
+                  <Form.Group className="customerGroup" controlId="address">
+                    <Form.Label>Adres</Form.Label>
+                    <Form.Control
+                      name="address"
+                      as="textarea"
+                      row={3}
+                      className="inputArea"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.address}
+                    ></Form.Control>
+                  </Form.Group>
+                </fieldset>
+                <Button type="submit">
+                  {currentState === States.NEW ? "Olustur" : "Guncelle"}
+                </Button>
+              </Form>
+            )}
+          </Formik>
+        </Container>
+        <Footer></Footer>
+      </div>
+    </Fragment>
+  );
+};
+
+export { CustomerAccount, States };

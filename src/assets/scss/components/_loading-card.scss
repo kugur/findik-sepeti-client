@@ -1,0 +1,101 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+@keyframes loadingSliding {
+    from {
+        -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+      }
+      to {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+      }
+}
+
+.loadingFindikCard {
+    width: '18rem';
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    cursor: pointer;
+  
+}
+
+.loadingCard {
+    background-color: variables.$card-color;
+    overflow: hidden;
+    // user-select: none; // this sets the element unselectable, unlike texts
+    // cursor: pointer; // changes the client's cursor
+
+    .loadingBackAnimation {
+        position: relative;
+        overflow: hidden;
+
+        &:after {
+            content: "";
+            -webkit-animation: loadingSliding 1.3s infinite;
+            animation:loadingSliding 1.3s infinite;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+            background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(variables.$loading-color), to(transparent));
+            background: linear-gradient(90deg, transparent, variables.$loading-color, transparent);
+        }
+    }
+
+    &:hover {
+        background-color:  rgb(128, 154, 77);
+     }
+
+    .loadingCardImage {
+        width: 100%;
+        aspect-ratio: 20/14;
+        background-color: variables.$loading-background-color;
+        
+    }
+
+    .card-title {
+        background-color: variables.$loading-background-color;
+        border-radius: 1em;
+        height: 1.2em;
+    }
+
+    .card-text {
+        background-color: variables.$loading-background-color;
+        border-radius: 1em;
+        height: 1.2em;
+        width: 60%;
+    }
+
+    .loadingButton {
+        width: 75%;
+        height: 2em;
+        background-color: variables.$loading-background-color;
+        border-radius: 6px;
+    }
+
+    .card-body {
+
+    }
+}
+
+.img-hover-zoom--quick-zoom img {
+    transform-origin: 0 0;
+    transition: transform .25s, visibility .25s ease-in;
+  }
+  
+//   /* The Transformation */
+//   .img-hover-zoom--quick-zoom:hover img {
+//     transform: scale(1.5);
+//   }
+
+//   /* Zoom-n-rotate Container */
+// .img-hover-zoom--zoom-n-rotate img {
+//     transition: transform .5s ease-in-out;
+//   }
+  
+//   /* The Transformation */
+//   .img-hover-zoom--zoom-n-rotate:hover img {
+//     transform: scale(2) rotate(25deg);
+//   }

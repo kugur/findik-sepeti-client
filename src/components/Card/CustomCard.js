@@ -1,13 +1,13 @@
-import React from "react";
+import {memo} from "react";
 import Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from 'react-router-dom';
 
-export const CustomCard = (props) => {
+export const CustomCard = memo((props) => {
+    console.log("Custom card re-rendered. id: " + props.id);
     const id = props.id;
     const navigate = useNavigate();
     const onClick = (e) => {
-        console.log("Card has been clicked.");
         navigate("/product/" + id);
     }
     
@@ -19,11 +19,12 @@ export const CustomCard = (props) => {
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    {props.id}
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>
         </Card>
     );
-}
+});
+
+
