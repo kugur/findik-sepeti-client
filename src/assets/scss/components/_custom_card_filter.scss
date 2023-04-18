@@ -1,0 +1,21 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+.customCardFilter {
+    margin-left: 1rem;
+    .category {
+        width: 30%;
+        color: variables.$font-color-light;
+        background: variables.$thirdary;
+        border: none;
+    }
+
+    .customCardFilterDropDown {
+        background: variables.$card-color;
+        .dropdown-item {
+            &:hover {
+                background: variables.$primary;
+                color: variables.$font-color-light;
+            }
+        }
+    }
+}

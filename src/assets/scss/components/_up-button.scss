@@ -1,0 +1,13 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+.upButton {
+    background-color: variables.$primary !important;
+    position: fixed !important;
+    right: 2rem !important;
+    bottom: 3rem !important;
+    
+    
+    .arrow {
+        color: variables.$secondary !important
+    }
+}

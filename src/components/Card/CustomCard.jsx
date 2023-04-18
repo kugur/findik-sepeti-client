@@ -17,11 +17,14 @@ export const CustomCard = memo((props) => {
             <Card.Img variant="top" src={props.image} />
             </div>
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>{props.title}</Card.Title>
                 <Card.Text>
                     {props.id}
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <div className="buttonPriceContainer">
+                <Button variant="primary">Satin Al</Button>
+                <p className="price">{props.price} TL</p>
+                </div>
             </Card.Body>
         </Card>
     );

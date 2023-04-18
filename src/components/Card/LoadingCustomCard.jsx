@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 
 function LoadingCustomCard(props) {
   return (
-    <Card className="loadingCard img-hover-zoom--quick-zoom">
+    <Card className="loadingCard">
       <div className="loadingCardImage loadingBackAnimation">
         <Card.Img variant="top" />
       </div>

@@ -10865,6 +10865,7 @@ textarea.form-control-lg {
   height: 100vh;
   justify-content: space-between;
   background-color: rgb(128, 154, 111);
+  color: #543504;
 }
 .detailContainer .detailWrapper {
   display: flex;
@@ -10892,7 +10893,7 @@ textarea.form-control-lg {
   align-self: flex-start;
 }
 .detailContainer .detailWrapper .infoContainer h2 {
-  color: rgb(102, 66, 36);
+  color: #543504;
 }
 .detailContainer .detailWrapper .buttonWrapper {
   display: flex;
@@ -10938,6 +10939,11 @@ header {
 
 .findikCard {
   width: "18rem";
+}
+
+.customCardFilterContainer {
+  display: flex;
+  justify-content: end;
 }
 
 .loginContainer {
@@ -11079,13 +11085,26 @@ header {
   width: "18rem";
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   cursor: pointer;
-}
-
-.card {
+  color: #543504;
   background-color: rgb(90, 114, 75);
 }
-.card:hover {
+.findikCard:hover {
   background-color: rgb(128, 154, 77);
+}
+.findikCard .buttonPriceContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.findikCard .buttonPriceContainer .price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(217, 217, 217);
+  padding-inline: 0.5rem;
+}
+
+.cardImage {
+  overflow: hidden;
 }
 
 .img-hover-zoom--quick-zoom img {
@@ -11096,20 +11115,6 @@ header {
 /* The Transformation */
 .img-hover-zoom--quick-zoom:hover img {
   transform: scale(1.5);
-}
-
-/* Zoom-n-rotate Container */
-.img-hover-zoom--zoom-n-rotate img {
-  transition: transform 0.5s ease-in-out;
-}
-
-/* The Transformation */
-.img-hover-zoom--zoom-n-rotate:hover img {
-  transform: scale(2) rotate(25deg);
-}
-
-.cardImage {
-  overflow: hidden;
 }
 
 @keyframes loadingSliding {
@@ -11145,9 +11150,6 @@ header {
   transform: translateX(-100%);
   background: linear-gradient(90deg, transparent, rgba(198, 137, 86, 0.67), transparent);
 }
-.loadingCard:hover {
-  background-color: rgb(128, 154, 77);
-}
 .loadingCard .loadingCardImage {
   width: 100%;
   aspect-ratio: 20/14;
@@ -11170,10 +11172,6 @@ header {
   background-color: rgb(102, 66, 36);
   border-radius: 6px;
 }
-.img-hover-zoom--quick-zoom img {
-  transform-origin: 0 0;
-  transition: transform 0.25s, visibility 0.25s ease-in;
-}
 
 .numberInput {
   display: flex;
@@ -11189,7 +11187,7 @@ header {
   width: 3em;
   border-radius: 0.7em;
   margin-inline: 0.3em;
-  background-color: rgb(204, 156, 117);
+  background-color: rgb(90, 114, 75);
   color: rgb(102, 66, 36);
   text-align: center;
   font-weight: 600;
@@ -11200,4 +11198,31 @@ header {
 }
 .numberInput .increaseButton, .numberInput .decreaseButton {
   color: rgb(102, 66, 36);
+}
+
+.upButton {
+  background-color: rgb(102, 66, 36) !important;
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 3rem !important;
+}
+.upButton .arrow {
+  color: rgb(128, 154, 111) !important;
+}
+
+.customCardFilter {
+  margin-left: 1rem;
+}
+.customCardFilter .category {
+  width: 30%;
+  color: rgb(217, 217, 217);
+  background: rgb(90, 114, 75);
+  border: none;
+}
+.customCardFilter .customCardFilterDropDown {
+  background: rgb(90, 114, 75);
+}
+.customCardFilter .customCardFilterDropDown .dropdown-item:hover {
+  background: rgb(102, 66, 36);
+  color: rgb(217, 217, 217);
 }/*# sourceMappingURL=style.css.map */

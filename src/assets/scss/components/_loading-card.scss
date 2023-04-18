@@ -43,11 +43,7 @@
             background: linear-gradient(90deg, transparent, variables.$loading-color, transparent);
         }
     }
-
-    &:hover {
-        background-color:  rgb(128, 154, 77);
-     }
-
+    
     .loadingCardImage {
         width: 100%;
         aspect-ratio: 20/14;
@@ -74,28 +70,5 @@
         background-color: variables.$loading-background-color;
         border-radius: 6px;
     }
-
-    .card-body {
-
-    }
 }
 
-.img-hover-zoom--quick-zoom img {
-    transform-origin: 0 0;
-    transition: transform .25s, visibility .25s ease-in;
-  }
-  
-//   /* The Transformation */
-//   .img-hover-zoom--quick-zoom:hover img {
-//     transform: scale(1.5);
-//   }
-
-//   /* Zoom-n-rotate Container */
-// .img-hover-zoom--zoom-n-rotate img {
-//     transition: transform .5s ease-in-out;
-//   }
-  
-//   /* The Transformation */
-//   .img-hover-zoom--zoom-n-rotate:hover img {
-//     transform: scale(2) rotate(25deg);
-//   }

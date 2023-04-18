@@ -29,8 +29,8 @@ const setCsrfToken = function (onSuccess) {
 if (!tokenStore.csrfToken) {
   setCsrfToken();
 }
-const encodedParams = new URLSearchParams();
-encodedParams.append("filter", JSON.stringify([{name:"category", operation: "equal", value: "22"}]));
+// const encodedParams = new URLSearchParams();
+// encodedParams.append("filter", JSON.stringify([{name:"category", operation: "equal", value: "22"}]));
 
 const encodeParamsMap = function(mappedParams) {
   if (!mappedParams || !(mappedParams instanceof Map) ||  mappedParams.size === 0) {
@@ -48,8 +48,7 @@ const httpClientWrapper = {
     getParams: function (relativeUrl, onSuccess, onError) {
         instance({
           method: "get",
-          url: relativeUrl,
-          params:encodedParams
+          url: relativeUrl
           
         })
           .then(function (response) {
