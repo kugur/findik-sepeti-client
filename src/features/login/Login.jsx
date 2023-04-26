@@ -18,7 +18,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 // import { UserContext } from "app/UserProvider";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
-import { Gender } from "helpers/Genders";
+import { Gender } from "constants/Genders";
 import { Toaster } from "components/Common/Toaster";
 
 const States = {

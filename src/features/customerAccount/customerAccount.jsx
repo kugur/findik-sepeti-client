@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { UserContext, isPreUser } from "app/UserProvider";
 import { useState } from "react";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
-import { Gender } from "helpers/Genders";
+import { Gender } from "constants/Genders";
 import { Toaster } from "components/Common/Toaster";
 
 const States = {

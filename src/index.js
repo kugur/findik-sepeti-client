@@ -16,12 +16,12 @@ const root = createRoot(container);
 
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <App/>
       <CustomToastContainer></CustomToastContainer>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
