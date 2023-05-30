@@ -46,7 +46,7 @@ const CardContainer = forwardRef(({ colCount, order, filters }, ref) => {
     }
     return loadingCards;
   };
-
+  
   return (
     <Fragment>
       <div

@@ -1,0 +1,23 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+.pagination {
+    
+
+    .page-link {
+        background-color: variables.$thirdary;
+        color: variables.$font-color-light;
+    }
+
+    .page-item.active {
+        .page-link {
+            background-color: variables.$primary;
+        }
+        
+    }
+}
+
+// .pagination > .active > .page-link {
+//     background-color: red;
+//     border-color: red;
+//     color: white;
+//   }

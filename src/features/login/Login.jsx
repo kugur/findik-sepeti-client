@@ -6,11 +6,8 @@ import { UserContext } from "app/UserProvider";
 import {
   Container,
   Row,
-  Input,
-  TabContainer,
   Tabs,
   Form,
-  Label,
   Button,
 } from "react-bootstrap";
 import { Formik } from "formik";

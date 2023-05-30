@@ -2,7 +2,7 @@ import { TopNavigation } from "components/topNavigationBar";
 import { Footer } from "layouts/Footer";
 import { Fragment, React, useEffect } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import { useContext } from "react";
 import { UserContext, isPreUser } from "app/UserProvider";
@@ -17,15 +17,13 @@ const States = {
 };
 
 const CustomerAccount = (params) => {
-  const location = useLocation();
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const [currentState, setCurrentState] = useState(
     isPreUser(user) ? States.NEW : States.UPDATE
   );
-  console.log(isPreUser);
-  console.log(`[CustomerAccount] params :: ${params}`);
-
+  const preUser = isPreUser(user);
+  
   const updateUser = (values) => {
     console.log(`Submitted values ${JSON.stringify(values)}`);
     values.username = values.email;
@@ -48,8 +46,8 @@ const CustomerAccount = (params) => {
 
   useEffect(() => {
     console.log(`[customerAccount] ${user.email}`);
-    setCurrentState(isPreUser(user) ? States.NEW : States.UPDATE);
-  }, [user.email]);
+    setCurrentState(preUser ? States.NEW : States.UPDATE);
+  }, [user.email, preUser]);
 
   return (
     <Fragment>

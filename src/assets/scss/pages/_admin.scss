@@ -1,0 +1,32 @@
+@use "/src/assets/scss/abstracts/variables"as variables;
+
+.tabs {
+    height: 100%;
+
+    .tab-content {
+        height: 100%;
+    }
+
+    .tab-pane {
+        height: 100%;
+    }
+}
+
+.adminProducts {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .productRow {
+        color: variables.$font-color-light;
+        border: 5px ridge variables.$secondary;
+        padding: 0.5em;
+        margin-block: 0.3em;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background: rgb(90 114 75);
+    }
+}

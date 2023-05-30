@@ -1,27 +1,30 @@
 import httpClientWrapper from "components/Common/HttpClientWrapper";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const useFetchData = function (url, pageSize, pageNumber, pageSort) {
+  console.log("[useFetchData] pageNumber ::: " + pageNumber);
   const [data, setData] = useState(null);
-  const [isFetching, setIsFetching] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
   const [pageModel, setPageModel] = useState({
     number: 0,
     size: 6,
     totalPages: 0,
+    sort: pageSort,
   });
 
   useEffect(() => {
-    console.log("[useFetchData] useEffect isFetching ::: " + isFetching);
+
+    console.log("[useFetchData] ");
     let ignore = false;
-    setIsFetching(true);
     const productRequestParams = new Map();
+    setIsFetching(true);
 
     productRequestParams.set("pageInfo", {
       page: pageNumber,
       size: pageSize,
       sort: pageSort,
     });
-    
+
     httpClientWrapper.get(
       url,
       function (response) {
@@ -31,6 +34,7 @@ const useFetchData = function (url, pageSize, pageNumber, pageSort) {
             number: response.number,
             size: response.size,
             totalPages: response.totalPages,
+            sort: pageSort,
           });
           setIsFetching(false);
         }
@@ -46,11 +50,10 @@ const useFetchData = function (url, pageSize, pageNumber, pageSort) {
     return () => {
       ignore = true;
       console.log("[useFetchData] clean effect");
-      setIsFetching(false);
     };
-  }, [url, pageSize, pageNumber, pageSort, isFetching]);
+  }, [url, pageSize, pageNumber, pageSort]);
 
-  return [data, pageModel, isFetching];
+  return [data, pageModel];
 };
 
 const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
@@ -79,6 +82,7 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
       httpClientWrapper.get(
         url,
         function (response) {
+          console.log("[useInfinityScrollFetchData] ignore:: " + ignore);
           if (!ignore) {
             setData([...data, ...response.content]);
             setPageModel({
@@ -89,16 +93,13 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
           }
         },
         function (error) {
+          console.log("[useInfinityScrollFetchData] ignore:: " + ignore);
           if (!ignore) {
             setInProgress(false);
           }
         },
         productRequestParams
       );
-      return () => {
-        ignore = true;
-        setInProgress(false);
-      };
     };
 
     const handleScroll = function () {
@@ -120,7 +121,9 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
       fetchData("/products", 6, pageSort);
     }
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [
     pageModel.number,
     pageModel.totalPages,

@@ -13,7 +13,21 @@ $base-color: #c6538c;
 
 .dashboardSection {
     background-color: variables.$secondary;
+    height: 100%;
 }
+
+.split {
+    border-right: 1px solid black;
+    height: 100%;
+  }
+
+  .split::before {
+    content: "";
+    border-right: 1px solid black;
+    height: 100%;
+    position: absolute;
+    left: 0;
+  }
 
 header {
     background-image: url(../imgs/deneme.jpg);
@@ -50,6 +64,6 @@ header {
 
 .customCardFilterContainer {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 

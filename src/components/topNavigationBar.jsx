@@ -1,14 +1,13 @@
-import {React, useContext, useEffect, memo} from "react";
+import {React, useContext, memo} from "react";
 import { Navbar, Container, Nav, Stack, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserButton } from "./UserButton";
 import  {UserContext}  from "app/UserProvider";
-import httpClientWrapper from "./Common/HttpClientWrapper";
 import { Toaster } from "./Common/Toaster";
 
 export const TopNavigation = memo((data) => {
     const {user, logout} = useContext(UserContext);
-    const navigate = useNavigate();
+    
     console.log("[TopNavigation] created");
    
     return (

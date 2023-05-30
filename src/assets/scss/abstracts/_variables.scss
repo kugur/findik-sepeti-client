@@ -13,8 +13,10 @@ $loading-background-color: rgb(102 66 36); //7a7272
 
 @use  "../../../../node_modules/bootstrap/scss/bootstrap.scss" with (
     $primary: $primary,
+    $secondary: $secondary,
+
     // $body-bg: rgb(253, 210, 191),   
-    $body-bg: rgb(255, 255, 255),   
+    $body-bg: $thirdary//rgb(255, 255, 255),   
     
 );
 

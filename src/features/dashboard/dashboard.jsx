@@ -11,6 +11,7 @@ import { filterItems, orderItems } from "constants/CardFilters";
 import { createFilterParam, createSortParam } from "helpers/FilterUtil";
 
 export const Dashboard = () => {
+  console.log("[Dashboard] intializing");
   const location = useLocation();
   const userInfo = location.state && location.state.userInfo;
   const cardContainerRef = useRef(null);
