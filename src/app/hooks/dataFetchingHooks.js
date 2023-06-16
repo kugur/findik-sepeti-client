@@ -1,5 +1,48 @@
 import httpClientWrapper from "components/Common/HttpClientWrapper";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { number } from "yup";
+
+/**
+ * 
+ * @param {requested url} url 
+ * @param {* requested id} id 
+ * @returns fetching data. If id is NaN or fetching is failed, it will return null;
+ */
+const useFetchDataById = function(url, id) {
+  console.log("[useFetchDataById] url: " + url + " id: " + id);
+  const [data, setData] = useState(null);
+  const [isFetching, setIsFetching] = useState(false);
+  
+  useEffect(() => {
+    console.log("[useFetchDataById] useEffec t url: " + url + " id: " + id);
+    if (! id instanceof number) {
+      return;
+    }
+
+    let ignore = false;
+    setIsFetching(true);
+
+    httpClientWrapper.get(url + id,
+      function(response) {
+        if (ignore) return;
+
+        setData(response);
+        setIsFetching(false);
+      },
+      function(error) {
+        if (ignore) return;
+        
+        setData(null);
+        setIsFetching(false);
+      });
+
+      return () => {
+        ignore = true;
+      };
+  }, [url, id]);
+
+  return [data, setData, isFetching];
+};
 
 const useFetchData = function (url, pageSize, pageNumber, pageSort) {
   console.log("[useFetchData] pageNumber ::: " + pageNumber);
@@ -138,4 +181,4 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
   return [inProgress, data];
 };
 
-export { useFetchData, useInfinityScrollFetchData };
+export { useFetchData, useFetchDataById, useInfinityScrollFetchData };

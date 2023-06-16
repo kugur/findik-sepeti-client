@@ -21,12 +21,35 @@
 
     .productRow {
         color: variables.$font-color-light;
-        border: 5px ridge variables.$secondary;
+        border: 0.2rem solid variables.$primary;
         padding: 0.5em;
         margin-block: 0.3em;
         border-radius: 10px;
         display: flex;
         align-items: center;
         background: rgb(90 114 75);
+
+        .imageContainer {
+            height: 3rem;
+        }
+    }
+
+    .productTitle {
+        justify-content: flex-end;
+
+        .newProduct {
+            width: auto;
+        }
+    }
+}
+
+.editProduct {
+
+    .imageContainer {
+        margin: 0.5rem;
+    }
+
+    .detailsContainer {
+        margin: 0.5rem;
     }
 }

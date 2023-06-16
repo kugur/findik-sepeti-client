@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import { Prodcuts } from "./Products";
+import { Prodcuts } from "./product/Products";
 
 const AdminTabs = function () {
   

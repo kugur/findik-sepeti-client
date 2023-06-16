@@ -11267,11 +11267,27 @@ header {
 }
 .adminProducts .productRow {
   color: rgb(217, 217, 217);
-  border: 5px ridge rgb(128, 154, 111);
+  border: 0.2rem solid rgb(102, 66, 36);
   padding: 0.5em;
   margin-block: 0.3em;
   border-radius: 10px;
   display: flex;
   align-items: center;
   background: rgb(90, 114, 75);
+}
+.adminProducts .productRow .imageContainer {
+  height: 3rem;
+}
+.adminProducts .productTitle {
+  justify-content: flex-end;
+}
+.adminProducts .productTitle .newProduct {
+  width: auto;
+}
+
+.editProduct .imageContainer {
+  margin: 0.5rem;
+}
+.editProduct .detailsContainer {
+  margin: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
