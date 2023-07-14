@@ -4,17 +4,28 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { useFetchData } from "app/hooks/dataFetchingHooks";
 import { PaginationButtons } from "components/Pagination/Pagination";
 import { Img } from "components/Img";
+import httpClientWrapper from "components/Common/HttpClientWrapper";
 
 function Prodcuts(props) {
     console.log("[Products] called.");
   const [pageNumber, setPageNumber] = useState(0);
   const navigate = useNavigate();
-  const [data, pageModel, isFetching] = useFetchData(
+  const [data, pageModel, reFetch] = useFetchData(
     "/products",
     5,
     pageNumber,
     "Id,Desc"
   );
+  const handleDelete = (id) => {
+    httpClientWrapper.delete("/products/" + id,
+    function(response){
+      console.log("Deleted product successfully id: " + id);
+      reFetch();
+    },
+    function(error){
+
+    })
+  };
 
   return (
     <Container className="adminProducts">
@@ -27,7 +38,7 @@ function Prodcuts(props) {
             <Row className="productRow" key={"product-" + product.id}>
               <Col>{product.id}</Col>
               <Col>
-                <Img className="imageContainer" src={"findik.jpg"}></Img>
+                <Img className="imageContainer" src={product.imageUrl}></Img>
                 
               </Col>
               <Col>{product.name}</Col>
@@ -37,7 +48,7 @@ function Prodcuts(props) {
                 <Button onClick={() => navigate("/admin/product/edit/" + product.id)}>Edit</Button>
               </Col>
               <Col>
-                <Button>Delete</Button>
+                <Button onClick={() => handleDelete(product.id)}>Delete</Button>
               </Col>
             </Row>
           ))}

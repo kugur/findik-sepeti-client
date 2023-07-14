@@ -11287,7 +11287,50 @@ header {
 
 .editProduct .imageContainer {
   margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.editProduct .imageContainer .imageWrapper {
+  justify-content: center;
+  align-content: center;
+  height: 22rem;
+  border: 3px solid rgb(102, 66, 36);
+  margin-inline: 3rem;
+}
+.editProduct .imageContainer .imageWrapper img {
+  justify-content: center;
+  max-height: 20rem;
+  width: auto;
+}
+.editProduct .imageContainer .imageSelectWrapper {
+  display: flex;
+  justify-content: center;
+}
+.editProduct .imageContainer .imageSelectWrapper .selectImageButton {
+  width: auto;
+  margin: 0.5rem;
+}
+.editProduct .imageContainer .imageSelectWrapper #selectImage {
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
 }
 .editProduct .detailsContainer {
   margin: 0.5rem;
+}
+.editProduct .detailsContainer .label {
+  margin-block: 0.2rem;
+  font-weight: bold;
+  color: #543504;
+}
+.editProduct .saveButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.editProduct .saveButtonContainer .saveButton {
+  width: auto;
+  margin-inline: 0.5rem;
+}
+.editProduct .saveButtonContainer .backButton {
+  width: auto;
 }/*# sourceMappingURL=style.css.map */

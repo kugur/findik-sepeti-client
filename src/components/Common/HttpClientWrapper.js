@@ -133,6 +133,28 @@ const httpClientWrapper = {
       });
   },
 
+  delete: function(relativeUrl, onSuccess, onError) {
+    instance({
+      method: "delete",
+      url: relativeUrl,
+      headers: {
+        "X-CSRF-TOKEN":  tokenStore.csrfToken
+    }})
+      .then(function (response) {
+        console.log(
+          `Get success called:: ${JSON.stringify(response)}`
+        );
+        typeof onSuccess == "function" && onSuccess(response.data);
+      })
+      .catch(function (error) {
+        console.log(`Get error called::  ${error}`);
+        typeof onError == "function" && onError(error);
+      })
+      .then(function () {
+        console.log("Get allway called");
+      });
+  },
+
   login: function (username, password, onSuccess, onError) {
     instance({
       method: "get",

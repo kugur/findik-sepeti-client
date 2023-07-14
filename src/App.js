@@ -5,6 +5,7 @@ import { Login } from "./features/login/Login";
 import { Order } from "features/orders/order";
 import { Admin } from "features/admin/Admin";
 import { EditProduct } from "features/admin/product/EditProduct";
+import {CreateProduct} from "features/admin/product/CreateProduct";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CustomerAccount } from "features/customerAccount/customerAccount";
 import { UserProvider } from "app/UserProvider";
@@ -40,7 +41,7 @@ function App() {
           <Route path="orders" element={<OrderWithPermission />}></Route>
           <Route path="admin" element={() => <div>Admin Sayfasi</div>}></Route>
           <Route path="admin/product/edit/:productId" element={<EditProduct></EditProduct>}></Route>
-          <Route path="admin/product/new" element={<EditProduct></EditProduct>}></Route>
+          <Route path="admin/product/new" element={<CreateProduct></CreateProduct>}></Route>
         </Routes>
       </UserProvider>
     </BrowserRouter>

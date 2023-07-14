@@ -47,9 +47,60 @@
 
     .imageContainer {
         margin: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .imageWrapper {
+            justify-content: center;
+            align-content: center;
+            height: 22rem;
+            border: 3px solid variables.$primary;
+            margin-inline: 3rem;
+
+            img {
+                justify-content: center;
+                max-height: 20rem;
+                width: auto;
+            }
+        }
+
+        .imageSelectWrapper {
+            display: flex;
+            justify-content: center;
+
+            .selectImageButton {
+                width: auto;
+                margin: 0.5rem;
+            }
+            #selectImage {
+                display: flex;
+                justify-content: center;
+                visibility: hidden;
+            }
+        }
     }
 
     .detailsContainer {
         margin: 0.5rem;
+
+        .label {
+            margin-block: 0.2rem;
+            font-weight: bold;
+            color: variables.$font-color;
+        }
+    }
+
+    .saveButtonContainer {
+        display: flex;
+        justify-content: flex-end;
+
+        .saveButton {
+            width: auto;
+            margin-inline: 0.5rem;
+        }
+
+        .backButton {
+            width: auto;
+        }
     }
 }

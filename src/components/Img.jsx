@@ -1,8 +1,13 @@
-function Img({src, alt, className}) {
+function Img({ src, localSrc, alt, className }) {
     console.log("process.env ::: " + JSON.stringify(process.env));
-    return(
-        <img   className={className} src={process.env.REACT_APP_IMAAGE_URL_ROOT +  src} alt={alt}></img>
-    )
+    if (src || localSrc) {
+        return (
+            <img className={className} src={localSrc ? URL.createObjectURL(localSrc) : process.env.REACT_APP_IMAAGE_URL_ROOT + src}
+                alt={alt}></img>
+        );
+    } else {
+        return <img alt={"resim"}></img>
+    }
 }
 
-export {Img};
+export { Img };

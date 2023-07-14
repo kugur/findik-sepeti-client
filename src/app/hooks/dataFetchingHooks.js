@@ -1,6 +1,6 @@
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { useEffect, useState } from "react";
-import { number } from "yup";
+import { number, ref } from "yup";
 
 /**
  * 
@@ -48,12 +48,17 @@ const useFetchData = function (url, pageSize, pageNumber, pageSort) {
   console.log("[useFetchData] pageNumber ::: " + pageNumber);
   const [data, setData] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
+  const [fetchFlip, setFetchFlip] = useState(false);
   const [pageModel, setPageModel] = useState({
     number: 0,
     size: 6,
     totalPages: 0,
     sort: pageSort,
   });
+
+  const reFetch = function() {
+    setFetchFlip(fetchFlip => !fetchFlip);
+  }
 
   useEffect(() => {
 
@@ -94,9 +99,9 @@ const useFetchData = function (url, pageSize, pageNumber, pageSort) {
       ignore = true;
       console.log("[useFetchData] clean effect");
     };
-  }, [url, pageSize, pageNumber, pageSort]);
+  }, [url, pageSize, pageNumber, pageSort, fetchFlip]);
 
-  return [data, pageModel];
+  return [data, pageModel, reFetch];
 };
 
 const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
