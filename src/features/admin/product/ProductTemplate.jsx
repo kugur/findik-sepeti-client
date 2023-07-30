@@ -10,6 +10,11 @@ function ProductTemplate({ data, setValue, onSubmit, errorMessage }) {
         imageFile = event.target.files[0];
         setValue("imageFile", imageFile);
     };
+
+    const setCategory = function(value) {
+        setValue("category", {...data.category, name: value});
+    };
+
     const navigate = useNavigate();
 
     if (errorMessage) {
@@ -50,7 +55,7 @@ function ProductTemplate({ data, setValue, onSubmit, errorMessage }) {
                     <label className='label' htmlFor="category">
                         kategori:
                     </label>
-                    <input id="category" onChange={e => setValue("category", e.target.value)} value={data.category}></input>
+                    <input id="category" onChange={e => setCategory(e.target.value)} value={data.category.name}></input>
                 </Row>
                 <Row>
                     <label className='label' htmlFor="price">

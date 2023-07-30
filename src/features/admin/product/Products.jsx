@@ -27,6 +27,10 @@ function Prodcuts(props) {
     })
   };
 
+  if (!data) {
+    return (<></>);
+  }
+
   return (
     <Container className="adminProducts">
       <Container>
@@ -43,7 +47,7 @@ function Prodcuts(props) {
               </Col>
               <Col>{product.name}</Col>
               <Col>{product.price}</Col>
-              <Col>{product.category}</Col>
+              <Col>{product.category.name}</Col>
               <Col>
                 <Button onClick={() => navigate("/admin/product/edit/" + product.id)}>Edit</Button>
               </Col>
