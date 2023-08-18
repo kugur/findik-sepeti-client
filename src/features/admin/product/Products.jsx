@@ -7,7 +7,7 @@ import { Img } from "components/Img";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 
 function Prodcuts(props) {
-    console.log("[Products] called.");
+  console.log("[Products] called.");
   const [pageNumber, setPageNumber] = useState(0);
   const navigate = useNavigate();
   const [data, pageModel, reFetch] = useFetchData(
@@ -17,25 +17,30 @@ function Prodcuts(props) {
     "Id,Desc"
   );
   const handleDelete = (id) => {
-    httpClientWrapper.delete("/products/" + id,
-    function(response){
-      console.log("Deleted product successfully id: " + id);
-      reFetch();
-    },
-    function(error){
-
-    })
+    httpClientWrapper.delete(
+      "/products/" + id,
+      function (response) {
+        console.log("Deleted product successfully id: " + id);
+        reFetch();
+      },
+      function (error) {}
+    );
   };
 
   if (!data) {
-    return (<></>);
+    return <></>;
   }
 
   return (
     <Container className="adminProducts">
       <Container>
         <Row className="productTitle" key="productTitle">
-          <Button className="newProduct" onClick={() => navigate("/admin/product/new")}>Yeni Urun</Button>
+          <Button
+            className="newProduct"
+            onClick={() => navigate("/admin/product/new")}
+          >
+            Yeni Urun
+          </Button>
         </Row>
         {data &&
           data.map((product) => (
@@ -43,13 +48,16 @@ function Prodcuts(props) {
               <Col>{product.id}</Col>
               <Col>
                 <Img className="imageContainer" src={product.imageUrl}></Img>
-                
               </Col>
               <Col>{product.name}</Col>
               <Col>{product.price}</Col>
-              <Col>{product.category.name}</Col>
+              <Col>{product.category && product.category.name}</Col>
               <Col>
-                <Button onClick={() => navigate("/admin/product/edit/" + product.id)}>Edit</Button>
+                <Button
+                  onClick={() => navigate("/admin/product/edit/" + product.id)}
+                >
+                  Edit
+                </Button>
               </Col>
               <Col>
                 <Button onClick={() => handleDelete(product.id)}>Delete</Button>

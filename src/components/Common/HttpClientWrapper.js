@@ -133,10 +133,11 @@ const httpClientWrapper = {
       });
   },
 
-  delete: function(relativeUrl, onSuccess, onError) {
+  delete: function(relativeUrl, onSuccess, onError, paramsMap) {
     instance({
       method: "delete",
       url: relativeUrl,
+      params: encodeParamsMap(paramsMap),
       headers: {
         "X-CSRF-TOKEN":  tokenStore.csrfToken
     }})

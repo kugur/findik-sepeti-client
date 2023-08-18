@@ -10,6 +10,7 @@ $card-color: rgb(90 114 75);
 $card-font-color: #543504;
 $loading-color: rgb(198 137 86 / 67%);
 $loading-background-color: rgb(102 66 36); //7a7272
+$error-message-color: #fff66e;
 
 @use  "../../../../node_modules/bootstrap/scss/bootstrap.scss" with (
     $primary: $primary,

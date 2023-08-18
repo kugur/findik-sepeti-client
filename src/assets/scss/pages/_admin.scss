@@ -104,3 +104,55 @@
         }
     }
 }
+
+.categoryItem {
+    color: variables.$font-color-light;
+    border: 0.2rem solid variables.$primary;
+    margin-block: 0.3em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background: rgb(90 114 75);
+
+    .title {
+        
+        background-color: variables.$primary;
+        margin-left: 0px;
+        font-size: large;
+    }
+
+    .value {
+        margin-left: 0px;
+        padding-top: 0.5em;
+        
+    }
+
+    .editContainer {
+        .buttonContainer {
+            display: flex;
+            justify-content: flex-end;
+
+            .buttonWrapper {
+                width: auto;
+            }
+        }
+
+        .errorMessageContainer {
+            color: variables.$error-message-color;
+            display: flex;
+            justify-content: flex-end;
+
+            .messageWrapper {
+                width: auto;
+            }
+        }
+       
+    }
+
+    .categoryNameInput {
+        background: variables.$primary;
+        color: variables.$font-color-light;
+    }
+    
+}
+
