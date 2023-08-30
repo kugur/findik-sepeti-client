@@ -6,20 +6,21 @@ const CategoryItem = function ({
   category,
   handleEdit,
   handleSave,
-  handleDelete
+  handleDelete,
 }) {
-  const [newName, setNewName] = useState(category ? category.id : "");
+  const [newName, setNewName] = useState(category ? category.name : "");
   const onSave = () => {
-    handleSave({
-      id: category.id,
-      name: newName,
-    });
+    handleSave({ ...category, name: newName });
   };
 
   const onEdit = () => {
     setNewName(category.name);
     handleEdit(category.id);
   };
+
+  const showEdit = [CategoryItemStatus.new, CategoryItemStatus.edit].includes(
+    category.status
+  );
 
   return (
     <Row className="categoryItem">
@@ -34,10 +35,12 @@ const CategoryItem = function ({
       </Row>
       <Row className="value">
         <Col className="categoryId">
-          <div className="value">{category.id}</div>
+          <div className="value">
+            {category.status !== CategoryItemStatus.new ? category.id : ""}
+          </div>
         </Col>
         <Col className="categoryName">
-          {category.status === CategoryItemStatus.edit ? (
+          {showEdit ? (
             <input
               className="categoryNameInput"
               value={newName}
@@ -50,7 +53,7 @@ const CategoryItem = function ({
         <Col className="editContainer">
           <Row className="buttonContainer">
             <div className="m-1 buttonWrapper">
-              {category.status === CategoryItemStatus.edit ? (
+              {showEdit ? (
                 <Button onClick={(e) => onSave()}>Save</Button>
               ) : (
                 <Button
@@ -79,6 +82,7 @@ const CategoryItem = function ({
 const CategoryItemStatus = {
   read: "READ",
   edit: "EDIT",
+  new: "NEW",
   inProgress: "INPROGRESS",
 };
 

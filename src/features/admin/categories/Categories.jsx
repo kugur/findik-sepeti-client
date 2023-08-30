@@ -2,7 +2,7 @@ import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { CategoryItem, CategoryItemStatus } from "./CategoryItem";
 import { useEffect, useState } from "react";
 import { useFetchData } from "app/hooks/dataFetchingHooks";
-const { Container, Row, Button} = require("react-bootstrap");
+const { Container, Row, Button } = require("react-bootstrap");
 
 const Categories = function () {
   const [categories, setCategories] = useState([]);
@@ -22,8 +22,7 @@ const Categories = function () {
     );
   }, []);
 
-  const save = function (category) {
-    setStatus(category.id, CategoryItemStatus.inProgress);
+  const update = function (category) {
     httpClientWrapper.put(
       "/category",
       category,
@@ -46,6 +45,45 @@ const Categories = function () {
     );
   };
 
+  const create = function (category) {
+    const previousId = category.id;
+    category.id = undefined;
+    httpClientWrapper.post(
+      "/category",
+      category,
+      function (response) {
+        let updatedValue = response.updatedValue;
+
+        setCategories((categories) => {
+          return categories.map((ctgry) => {
+            if (ctgry.id === previousId) {
+              return { ...updatedValue, status: CategoryItemStatus.read };
+            }
+            return ctgry;
+          });
+        });
+      },
+      function (error) {
+        console.log("Cateogry update response error: " + error);
+        setStatus(category.id, CategoryItemStatus.read);
+      }
+    );
+  };
+
+  const save = function (category) {
+    const willBeSentCategory = {
+      id: category.id,
+      name: category.name,
+    };
+    if (category.status === CategoryItemStatus.new) {
+      setStatus(category.id, CategoryItemStatus.inProgress);
+      create(willBeSentCategory);
+    } else {
+      setStatus(category.id, CategoryItemStatus.inProgress);
+      update(willBeSentCategory);
+    }
+  };
+
   const onDelete = function (id) {
     const paramMap = new Map();
     paramMap.set("ids", [id]);
@@ -53,7 +91,9 @@ const Categories = function () {
       "category",
       function (response) {
         if (response.successful) {
-          setCategories(categories => categories.filter((item) => item.id !== id));
+          setCategories((categories) =>
+            categories.filter((item) => item.id !== id)
+          );
         } else {
           const errorMessage =
             response.generalError || response.couldNotDeleteResults[id];
@@ -95,7 +135,11 @@ const Categories = function () {
   };
 
   const addNewCategory = () => {
-    categories.add({id: undefined, name: "", status: CategoryItemStatus.edit});
+    const newTimestampKey = Date.now().toString() + Math.random().toString();
+    setCategories((categories) => [
+      { id: newTimestampKey, name: "", status: CategoryItemStatus.new },
+      ...categories,
+    ]);
   };
 
   const categoryList = categories.map((category) => (
@@ -108,10 +152,10 @@ const Categories = function () {
     ></CategoryItem>
   ));
   return (
-    <Container>
+    <Container className="categoryContainer">
       <h1>Kategori sayfasi</h1>
-      <Row>
-        <Button onClick={()=> addNewCategory()}> Yeni Kategori</Button>
+      <Row className="actionContainer">
+        <Button className="newCategory" onClick={() => addNewCategory()}> Yeni Kategori</Button>
       </Row>
       {categoryList}
     </Container>

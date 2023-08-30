@@ -15,7 +15,7 @@ const useFetchDataById = function(url, id) {
   
   useEffect(() => {
     console.log("[useFetchDataById] useEffec t url: " + url + " id: " + id);
-    if (!(id instanceof number)) {
+    if (isNaN(id) && isNaN(parseFloat(id))) {
       return;
     }
 

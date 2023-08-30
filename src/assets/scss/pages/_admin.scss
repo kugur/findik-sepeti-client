@@ -105,6 +105,16 @@
     }
 }
 
+.categoryContainer {
+    .actionContainer {
+        flex-flow: row-reverse;
+        
+        .newCategory {
+            width: auto;
+        }
+    }
+}
+
 .categoryItem {
     color: variables.$font-color-light;
     border: 0.2rem solid variables.$primary;

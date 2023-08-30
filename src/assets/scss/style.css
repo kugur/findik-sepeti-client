@@ -11283,6 +11283,13 @@ header {
   width: auto;
 }
 
+.categoryContainer .actionContainer {
+  flex-flow: row-reverse;
+}
+.categoryContainer .actionContainer .newCategory {
+  width: auto;
+}
+
 .categoryItem {
   color: rgb(217, 217, 217);
   border: 0.2rem solid rgb(102, 66, 36);
