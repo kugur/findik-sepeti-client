@@ -1,0 +1,93 @@
+@use "/src/assets/scss/abstracts/variables"as variables;
+
+.cartContainer {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cartItemContainer {
+    flex-grow: 4;
+}
+
+.paymentContainer {
+    flex-grow: 1;
+    border: solid;
+    border-color: variables.$primary;
+    height: auto;
+    height: fit-content;
+    padding: 0.3rem;
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: variables.$secondary;
+
+    .paymentRow {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+            color: variables.$primary;
+            font-weight: bolder;
+        }
+
+        &.total {
+            font-size: larger;
+        }
+
+        &.buttonContainer {
+            justify-content: end;
+            margin-block: 1rem;
+        }
+    }
+}
+
+.cartItem {
+    border: solid;
+    border-radius: 0.2rem;
+    margin-block: 1rem;
+    border-color: variables.$primary;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+    .imgContainer {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid;
+        border-color: variables.$primary;
+
+        .img {
+            height: 4rem;
+        }
+    }
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cartItemColumn {
+
+        .title {
+            min-height: 1.9rem;
+            padding: 0.2rem;
+            color: variables.$font-color-light;
+            background-color: variables.$primary;
+        }
+
+        .value {
+            font-size: 1.2rem;
+            padding: 0.2rem;
+            height: 5rem;
+            padding-inline-end: 1rem;
+            padding-block-start: 0.2rem;
+            align-items: center;
+        }
+
+        .buttonWrapper {
+            width: fit-content;
+            height: fit-content;
+        }
+    }
+
+}

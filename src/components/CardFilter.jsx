@@ -10,7 +10,7 @@ export default function CardFilter({items, selectedValue, onSelect}) {
 
         <Dropdown.Menu className="customCardFilterDropDown">
           {Object.keys(items).map((attr) => (
-            <Dropdown.Item eventKey={attr} active={selectedValue === attr}>
+            <Dropdown.Item eventKey={attr} key={attr} active={selectedValue === attr}>
               {items[attr].title}
             </Dropdown.Item>
           ))}

@@ -1,14 +1,20 @@
-@use '../abstracts/variables' as variables;
+@use '../abstracts/variables'as variables;
 
 .numberInput {
 
     display: flex;
     align-items: center;
 
+    /* Chrome, Safari, Edge, Opera */
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-        appearance: none;
+        -webkit-appearance: none;
         margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 
     input {
@@ -26,7 +32,8 @@
         }
     }
 
-    .increaseButton, .decreaseButton {
+    .increaseButton,
+    .decreaseButton {
         color: variables.$primary;
     }
 

@@ -1,13 +1,17 @@
-import React, { forwardRef, Fragment} from "react";
+import React, { forwardRef, Fragment } from "react";
 import { CustomCard } from "./CustomCard";
 import LoadingCustomCard from "./LoadingCustomCard";
 import { Col } from "react-bootstrap";
-import findikBackground from "assets/imgs/deneme.jpg";
-import {  useInfinityScrollFetchData} from "app/hooks/dataFetchingHooks";
+import { useInfinityScrollFetchData } from "app/hooks/dataFetchingHooks";
 
 const CardContainer = forwardRef(({ colCount, order, filters }, ref) => {
-  const [ isLoading, data] = useInfinityScrollFetchData("/products", 6, order, filters);
-  
+  const [isLoading, data] = useInfinityScrollFetchData(
+    "/products",
+    6,
+    order,
+    filters
+  );
+
   const getClassForColumnCount = (count) => {
     if (count === 3) {
       return "row-cols-2 row-cols-md-3 row-cols-xl-3 ";
@@ -46,7 +50,7 @@ const CardContainer = forwardRef(({ colCount, order, filters }, ref) => {
     }
     return loadingCards;
   };
-  
+
   return (
     <Fragment>
       <div
@@ -58,7 +62,12 @@ const CardContainer = forwardRef(({ colCount, order, filters }, ref) => {
       >
         {data.map((item) => (
           <Col className="mb-5" key={item.id}>
-            <CustomCard image={findikBackground} id={item.id} title={item.name} price={item.price}></CustomCard>
+            <CustomCard
+              image={item.imageUrl}
+              id={item.id}
+              title={item.name}
+              price={item.price}
+            ></CustomCard>
           </Col>
         ))}
         {createLoadingCards()}
