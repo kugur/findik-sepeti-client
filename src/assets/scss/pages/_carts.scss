@@ -7,6 +7,8 @@
 
 .cartItemContainer {
     flex-grow: 4;
+    min-width: 700px;
+    padding: 0px;
 }
 
 .paymentContainer {
@@ -15,8 +17,9 @@
     border-color: variables.$primary;
     height: auto;
     height: fit-content;
-    padding: 0.3rem;
-    margin: 1rem;
+    min-width: 230px;
+    
+    margin-inline: 1rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: variables.$secondary;
 
@@ -43,10 +46,12 @@
 .cartItem {
     border: solid;
     border-radius: 0.2rem;
-    margin-block: 1rem;
     border-color: variables.$primary;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
     .imgContainer {
 
         display: flex;
@@ -82,6 +87,7 @@
             padding-inline-end: 1rem;
             padding-block-start: 0.2rem;
             align-items: center;
+            overflow: auto;
         }
 
         .buttonWrapper {

@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { CartItem } from "./CartItem";
-import { useCarts } from "./CartContext";
+import { useCarts, util as cartUtil } from "./CartContext";
+import { UserContext } from "app/UserProvider";
 import { useNavigate } from "react-router-dom";
 
 export const Cart = (props) => {
   const navigate = useNavigate();
+  
+  const {user} = useContext(UserContext);
   const carts = useCarts();
-  const total = carts.reduce(
-    (sumPrice, cart) => cart.product.price * cart.quantity + sumPrice,
-    0
-  );
+  const totalProduct = cartUtil.total(carts);
+  const shippingCost = 20;
+  
   const cartItems = carts.map((cart) => {
     return <CartItem cartItem={cart}></CartItem>;
   });
   const emptyItems = <div>Sepetiniz bos</div>;
+  
+  const handleApproveCart = function() {
+    if (!user || user === undefined || !(user.email)) {
+      navigate("/login");
+    } else {
+      navigate("/payment");
+    }
+  }
 
   return (
     <>
@@ -27,19 +37,19 @@ export const Cart = (props) => {
             <Col className="paymentContainer">
               <Container>
                 <div className="paymentRow">
-                  <div className="title">Urun Toplamai</div>
-                  <div className="value"> 11.10 TL</div>
+                  <div className="title">Urun Toplami</div>
+                  <div className="value"> {totalProduct} TL</div>
                 </div>
                 <div className="paymentRow">
                   <div className="title">Kargo ucreti</div>
-                  <div className="value"> 10 TL</div>
+                  <div className="value"> {shippingCost} TL</div>
                 </div>
                 <div className="paymentRow total">
                   <div className="title">TOPLAM</div>
-                  <div className="value"> {total}</div>
+                  <div className="value"> {totalProduct + shippingCost} TL</div>
                 </div>
                 <div className="paymentRow buttonContainer">
-                  <Button onClick={() => navigate("/payment")}>
+                  <Button onClick={() => handleApproveCart()}>
                     Sepeti Onayla
                   </Button>
                 </div>

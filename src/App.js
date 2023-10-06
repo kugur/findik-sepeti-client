@@ -1,9 +1,9 @@
 import { Dashboard } from "./features/dashboard/dashboard";
 import { Detail } from "./features/detail/detail";
 import { Cart } from "./features/cart/Cart";
-import { Payment } from "features/payment/payment";
+import { Payment } from "features/payment/Payment";
 import { Login } from "./features/login/Login";
-import { Order } from "features/orders/order";
+import { Orders } from "features/orders/Orders";
 import { Admin } from "features/admin/Admin";
 import { EditProduct } from "features/admin/product/EditProduct";
 import { CreateProduct } from "features/admin/product/CreateProduct";
@@ -19,7 +19,7 @@ const CustomerAccountWithPermission = withPermission(CustomerAccount, [
   "ROLE_USER",
   "ROLE_ADMIN",
 ]);
-const OrderWithPermission = withPermission(Order, ["ROLE_USER", "ROLE_ADMIN"]);
+const OrderWithPermission = withPermission(Orders, ["ROLE_USER", "ROLE_ADMIN"]);
 const AdminWithPermission = withPermission(Admin, ["ROLE_ADMIN"]);
 const DashboardWrapper = withIfHavePermissions([
   [AdminWithPermission, ["ROLE_ADMIN"]],

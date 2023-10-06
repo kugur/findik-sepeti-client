@@ -79,6 +79,22 @@ const addCart = function (cartItem, dispatch) {
   );
 };
 
+const fetchCarts = function(dispatch) {
+  httpClientWrapper.get(
+    "/cart",
+    function (response) {
+      const cartItems = response.map((cartItem) => {
+        return { ...cartItem, sync: true };
+      });
+      dispatch({
+        type: actions.initilize,
+        cartItems: cartItems, 
+      });
+    },
+    function (error) {}
+  );
+};
+
 const deleteCart = function (cartItem, dispatch) {
   const requestParam = new Map();
   requestParam.set("productId", cartItem.id);
@@ -116,19 +132,7 @@ const CartProvider = function ({ children }) {
   const [carts, dispatch] = useReducer(cartReducer, []);
 
   useEffect(() => {
-    httpClientWrapper.get(
-      "/cart",
-      function (response) {
-        const cartItems = response.map((cartItem) => {
-          return { ...cartItem, sync: true };
-        });
-        dispatch({
-          type: actions.initilize,
-          cartItems: cartItems, 
-        });
-      },
-      function (error) {}
-    );
+   fetchCarts(dispatch);
   }, []);
 
   useEffect(() => {
@@ -165,4 +169,13 @@ const useCartsDispatch = function () {
   return useContext(CartDispatchContext);
 };
 
-export { useCarts, useCartsDispatch, CartProvider, actions };
+const util = {
+  total: function(carts) {
+    return carts.reduce(
+      (sumPrice, cart) => cart.product.price * cart.quantity + sumPrice,
+      0
+    );
+  }
+};
+
+export { useCarts, useCartsDispatch, CartProvider, actions, fetchCarts, util };
