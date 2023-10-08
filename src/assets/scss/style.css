@@ -12210,7 +12210,6 @@ header {
 }
 .orderContainer .orderWrapper .orderSection {
   margin-top: 2em;
-  height: 10em;
   border: solid;
 }
 .orderContainer .orderWrapper .orderSection .orderHeader {
@@ -12230,23 +12229,25 @@ header {
   font-weight: 600;
 }
 .orderContainer .orderWrapper .orderSection .orderBody {
-  height: 60%;
   background-color: rgb(90, 114, 75);
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productContainer {
-  height: 100%;
+.orderContainer .orderWrapper .orderSection .orderBody .productList {
+  display: flex;
+  flex-direction: column;
+}
+.orderContainer .orderWrapper .orderSection .orderBody .productList .productContainer {
   width: auto;
   display: flex;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productContainer .imgWrapper {
-  height: 100%;
+.orderContainer .orderWrapper .orderSection .orderBody .productList .productContainer .imgWrapper {
+  height: 6rem;
   width: auto;
   padding: 1em;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productDesc {
+.orderContainer .orderWrapper .orderSection .orderBody .productList .productDesc {
   margin: 1em;
 }
 .orderContainer .orderWrapper .orderSection .orderBody .buttonList {

@@ -5,12 +5,13 @@ const Order = function({order}) {
     const items = order.orderItems.map(orderItem => {
         return (
             <div className="productContainer">
-                <Img localSrc={orderItem.product.imageUrl} className="imgWrapper"></Img>
-            {/* <img src={order} alt="siparis resmi" className="imgWrapper" /> */}
+                <Img src={orderItem.product.imageUrl} className="imgWrapper"></Img>
             <div className="productDesc">
-                Bahce Findik
+                {orderItem.product.name}
                 <br></br>
-                100tl
+                {orderItem.product.price} TL
+                <br></br>
+                x {orderItem.quantity}
             </div>
         </div>
         )
@@ -36,15 +37,10 @@ const Order = function({order}) {
         </div>
     </div>
     <div className="orderBody">
+        <div className="productList">
         {items}
-        {/* <div className="productContainer">
-            <img src={order} alt="siparis resmi" className="imgWrapper" />
-            <div className="productDesc">
-                Bahce Findik
-                <br></br>
-                100tl
-            </div>
-        </div> */}
+        </div>
+       
         <div className="buttonList">
             <Button>Fatura</Button>
             <Button>Kargo Takip</Button>
