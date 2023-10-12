@@ -29,7 +29,10 @@
 }
 
 .loginDialog {
+    color: white;
+    
     .tab-content {
+        background-color: variables.$thirdary;
         border-bottom: 1px solid bootstrap.$primary;
         border-left: 1px solid bootstrap.$primary;
         border-right: 1px solid bootstrap.$primary;
@@ -40,7 +43,9 @@
         border-color: bootstrap.$primary;
     }
 
-    .nav-link:active {
-        border-color: bootstrap.$primary;
+    .nav-link.active {
+        background-color: variables.$thirdary;
+        border-color: variables.$primary;
+        border-bottom-color: variables.$thirdary;
     }
 }

@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import { Container, Form, Button } from "react-bootstrap";
 import {
+  actions,
   fetchCarts,
   useCartsDispatch,
   useCarts,
@@ -23,10 +24,14 @@ const Payment = function () {
     fetchCarts(dispatch);
   }, [dispatch]);
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (values) => {
     let salesOrder = {
       payment: { creditCardNumber: values.creditCard },
-      shipping: { address: values.address, note: values.shippingNote },
+      shipping: {
+        address: values.address,
+        note: values.shippingNote,
+        name: values.name,
+      },
     };
 
     const orderItems = carts.map((cart) => {
