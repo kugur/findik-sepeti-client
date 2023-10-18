@@ -1,10 +1,10 @@
-import { React, useContext, memo, useState } from "react";
+import { React, useContext, memo } from "react";
 import { Navbar, Container, Nav, Stack, Button, Badge } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserButton } from "./UserButton";
 import { UserContext } from "app/UserProvider";
 import { Toaster } from "./Common/Toaster";
-import httpClientWrapper from "./Common/HttpClientWrapper";
+
 import { Input } from "@mui/icons-material";
 import { useCarts } from "features/cart/CartContext";
 
@@ -22,7 +22,7 @@ export const TopNavigation = memo((data) => {
   };
 
   return (
-    <Navbar bg="light" expand="lg" className="dashboard">
+    <Navbar expand="lg" className="dashboard">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Findik Sepeti

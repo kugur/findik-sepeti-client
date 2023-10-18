@@ -2,12 +2,15 @@
 @use "../layout/header";
 @use "/src/assets/scss/abstracts/variables" as variables;
 
-$base-color: #c6538c;
+// $base-color: #c6538c;
 
 .dashboard {
-    
+    background-color: variables.$thirdary;
+    color: white;
    .navbar-brand {
-       color:red;
+       color: variables.$primary;
+       font-weight: bolder;
+       font-size: x-large;
    }   
 }
 

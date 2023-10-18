@@ -38,7 +38,7 @@ const encodeParamsMap = function(mappedParams) {
   }
   const encodedParams = new URLSearchParams();
   mappedParams.forEach((value, key) => {
-    encodedParams.append(key, JSON.stringify(value));
+    encodedParams.append(key, value instanceof Object ? JSON.stringify(value) : value);
   });
   return encodedParams;
 }
@@ -111,11 +111,12 @@ const httpClientWrapper = {
       });
   },
 
-  put: function (relativeUrl, data, onSuccess, onError) {
+  put: function (relativeUrl, data, onSuccess, onError, paramsMap) {
     instance({
       method: "put",
       url: relativeUrl,
       data: data,
+      params: encodeParamsMap(paramsMap),
       headers: {
         "X-CSRF-TOKEN": tokenStore.csrfToken,
       },

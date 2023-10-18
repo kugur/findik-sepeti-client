@@ -4,6 +4,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { Prodcuts } from "./product/Products";
 import { Categories } from "./categories/Categories";
+import { Orders } from "./orders/Orders";
 
 const AdminTabs = function () {
   
@@ -53,7 +54,7 @@ const AdminTabs = function () {
                   <Categories></Categories>
                 </Tab.Pane>
                 <Tab.Pane eventKey="orders">
-                  <Tab2Content/>
+                 <Orders></Orders>
                 </Tab.Pane>
                 <Tab.Pane eventKey="stock">
                   <Tab2Content/>

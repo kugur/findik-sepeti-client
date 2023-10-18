@@ -8,7 +8,7 @@ import { Toaster } from "components/Common/Toaster";
 const EditProduct = function (props) {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const [data, setData, isFetching] = useFetchDataById("/product/", productId);
+  const [data, setData, isFetching] = useFetchDataById("/products/", productId);
   const [errorMessage, setErrorMessage] = useState();
   const setValue = function (key, value) {
     setData({

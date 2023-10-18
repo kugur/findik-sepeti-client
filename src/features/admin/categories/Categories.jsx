@@ -1,7 +1,6 @@
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { CategoryItem, CategoryItemStatus } from "./CategoryItem";
 import { useEffect, useState } from "react";
-import { useFetchData } from "app/hooks/dataFetchingHooks";
 const { Container, Row, Button } = require("react-bootstrap");
 
 const Categories = function () {
@@ -155,7 +154,10 @@ const Categories = function () {
     <Container className="categoryContainer">
       <h1>Kategori sayfasi</h1>
       <Row className="actionContainer">
-        <Button className="newCategory" onClick={() => addNewCategory()}> Yeni Kategori</Button>
+        <Button className="newCategory" onClick={() => addNewCategory()}>
+          {" "}
+          Yeni Kategori
+        </Button>
       </Row>
       {categoryList}
     </Container>

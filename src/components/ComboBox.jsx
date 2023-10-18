@@ -2,8 +2,8 @@ import { Dropdown } from "react-bootstrap";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { useState } from "react";
 
-const ComboBox = function ({ value, onChange, url }) {
-  const [items, setItems] = useState([]);
+const ComboBox = function ({ value, onChange, url, defaultItems=[]}) {
+  const [items, setItems] = useState(defaultItems);
   const [loading, setLoading] = useState(false);
 
   const fetchData = function () {
@@ -23,8 +23,7 @@ const ComboBox = function ({ value, onChange, url }) {
   };
 
   const handleItemClick = function (id) {
-    console.log("handleItemClicked : e {}", id);
-    onChange(items.find(item => item.id === parseInt(id)));
+    onChange(items.find(item => item.id === (isNaN(id) ? id : parseInt(id))));
   };
 
   const loadingItem = (
@@ -34,7 +33,10 @@ const ComboBox = function ({ value, onChange, url }) {
     ? loadingItem
     : items.map((item) => {
         return (
-          <Dropdown.Item id={item.id} key={item.id} onClick={(e) => handleItemClick(e.target.id)}>
+          <Dropdown.Item id={item.id} key={item.id} onClick={(e) =>{
+            e.preventDefault();
+            handleItemClick(e.target.id);
+          }}>
             {item.name}
           </Dropdown.Item>
         );

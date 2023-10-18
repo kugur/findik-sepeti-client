@@ -12058,8 +12058,14 @@ textarea.form-control-lg {
   margin-top: 2em;
 }
 
+.dashboard {
+  background-color: rgb(90, 114, 75);
+  color: white;
+}
 .dashboard .navbar-brand {
-  color: red;
+  color: rgb(102, 66, 36);
+  font-weight: bolder;
+  font-size: x-large;
 }
 
 .dashboardSection {
@@ -12206,11 +12212,12 @@ header {
 .orderContainer .orderWrapper .orderSectionWrapper {
   display: block;
 }
-.orderContainer .orderWrapper .orderSection {
+
+.orderSection {
   margin-top: 2em;
   border: solid;
 }
-.orderContainer .orderWrapper .orderSection .orderHeader {
+.orderSection .orderHeader {
   height: 40%;
   background-color: rgb(102, 66, 36);
   border-bottom: double;
@@ -12220,35 +12227,35 @@ header {
   padding-left: 1em;
   padding-top: 0.2em;
 }
-.orderContainer .orderWrapper .orderSection .orderHeader .headerCell .cellTitle {
+.orderSection .orderHeader .headerCell .cellTitle {
   color: rgb(217, 217, 217);
 }
-.orderContainer .orderWrapper .orderSection .orderHeader .headerCell .cellValue {
+.orderSection .orderHeader .headerCell .cellValue {
   font-weight: 600;
 }
-.orderContainer .orderWrapper .orderSection .orderBody {
+.orderSection .orderBody {
   background-color: rgb(90, 114, 75);
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productList {
+.orderSection .orderBody .productList {
   display: flex;
   flex-direction: column;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productList .productContainer {
+.orderSection .orderBody .productList .productContainer {
   width: auto;
   display: flex;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productList .productContainer .imgWrapper {
+.orderSection .orderBody .productList .productContainer .imgWrapper {
   height: 6rem;
   width: auto;
   padding: 1em;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .productList .productDesc {
+.orderSection .orderBody .productList .productDesc {
   margin: 1em;
 }
-.orderContainer .orderWrapper .orderSection .orderBody .buttonList {
+.orderSection .orderBody .buttonList {
   display: flex;
   align-items: center;
   gap: 0.2em;

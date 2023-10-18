@@ -1,6 +1,5 @@
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { useEffect, useState } from "react";
-import { number, ref } from "yup";
 
 /**
  * 
@@ -109,6 +108,7 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
   const [pageModel, setPageModel] = useState({
     number: -1,
     totalPage: 0,
+    filters: filters
   });
   const [inProgress, setInProgress] = useState(false);
 
@@ -123,9 +123,9 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
         sort: pageSort,
       });
 
-      if (filters && filters instanceof Array && filters.length > 0) {
-        productRequestParams.set("filters", filters);
-      }
+      // if (pageModel.filters && pageModel.filters instanceof Array && pageModel.filters.length > 0) {
+        productRequestParams.set("filters", pageModel.filters);
+      // }
 
       httpClientWrapper.get(
         url,
@@ -133,10 +133,10 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
           console.log("[useInfinityScrollFetchData] ignore:: " + ignore);
           if (!ignore) {
             setData([...data, ...response.content]);
-            setPageModel({
+            setPageModel(pageModel => ({...pageModel,
               number: response.number,
               totalPages: response.totalPages,
-            });
+            }));
             setInProgress(false);
           }
         },
@@ -169,12 +169,18 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
       fetchData("/products", 6, pageSort);
     }
 
+    if (JSON.stringify(filters) !== JSON.stringify(pageModel.filters)) {
+      setPageModel(pageModel => ({...pageModel, filters: filters, number: -1}));
+      setData([]);
+    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [
     pageModel.number,
     pageModel.totalPages,
+    pageModel.filters,
     pageSize,
     pageSort,
     url,
@@ -183,7 +189,7 @@ const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {
     filters,
   ]);
 
-  return [inProgress, data];
+  return [inProgress, data, setData];
 };
 
 export { useFetchData, useFetchDataById, useInfinityScrollFetchData };

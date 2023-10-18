@@ -28,7 +28,7 @@ const hasRole = (userInfo, role) => {
 const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [user, setUser] = useState({ email: "" });
+  const [user, setUser] = useState({ email: "", isDefault: true });
   
 
   const handlePreUser = useCallback(() => {
@@ -60,7 +60,7 @@ const UserProvider = ({ children }) => {
   // console.log(`UserProvider before user:::: ${JSON.stringify(user)}`);
 
   useEffect(() => {
-    
+    console.log("[UserProvider] useEffect fetching userInfo");
     httpClientWrapper.get("/users", function (response) {
       setUser(response);
 
@@ -72,6 +72,8 @@ const UserProvider = ({ children }) => {
       ) {
         handlePreUser();
       }
+    }, function(error) {
+      setUser({...user, isDefault: false})
     });
   }, [user.version, handlePreUser]);
 
