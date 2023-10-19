@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { Gender } from "constants/Genders";
 import { Toaster } from "components/Common/Toaster";
+import { TopNavigation } from "components/topNavigationBar";
 
 const States = {
   LOGIN: "login",
@@ -304,6 +305,8 @@ const Login = () => {
 
   return (
     <Fragment>
+      <TopNavigation></TopNavigation>
+      
       <Container className="loginContainer">
         <Row className="loginDialog">
           <Tabs

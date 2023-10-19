@@ -33,7 +33,7 @@ function Prodcuts(props) {
 
   return (
     <Container className="adminProducts">
-      <Container>
+      <Container className="productContainer">
         <Row className="productTitle" key="productTitle">
           <Button
             className="newProduct"
@@ -65,7 +65,7 @@ function Prodcuts(props) {
             </Row>
           ))}
       </Container>
-      <PaginationButtons
+      <PaginationButtons className="paginationButtons"
         currentPageNumber={pageNumber}
         maxPageNumber={pageModel.totalPages}
         onChange={setPageNumber}

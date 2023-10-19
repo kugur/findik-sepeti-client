@@ -4,6 +4,7 @@ import { CartItem } from "./CartItem";
 import { useCarts, util as cartUtil } from "./CartContext";
 import { UserContext } from "app/UserProvider";
 import { useNavigate } from "react-router-dom";
+import { TopNavigation } from "components/topNavigationBar";
 
 export const Cart = (props) => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ export const Cart = (props) => {
 
   return (
     <>
+    <TopNavigation></TopNavigation>
       <h1>Sepetim</h1>
 
       <Container>

@@ -53,7 +53,9 @@ const UserProvider = ({ children }) => {
         setUser({});
         navigate("/");
       },
-      function (error) {}
+      function (error) {
+        
+      }
     );
   };
 

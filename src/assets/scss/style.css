@@ -12067,9 +12067,17 @@ textarea.form-control-lg {
   font-weight: bolder;
   font-size: x-large;
 }
+.dashboard .nav-link {
+  color: white;
+}
+.dashboard .shoppingCart {
+  padding-block: 0.45rem;
+  cursor: pointer;
+}
 
 .dashboardSection {
   background-color: rgb(128, 154, 111);
+  height: 100%;
   padding: 1rem;
 }
 
@@ -12215,12 +12223,13 @@ header {
 
 .orderSection {
   margin-top: 2em;
-  border: solid;
+  color: rgb(217, 217, 217);
+  border: 0.2rem solid rgb(102, 66, 36);
+  border-radius: 10px;
 }
 .orderSection .orderHeader {
   height: 40%;
   background-color: rgb(102, 66, 36);
-  border-bottom: double;
   display: grid;
   grid-template-columns: auto auto auto auto;
   width: 100%;
@@ -12229,6 +12238,7 @@ header {
 }
 .orderSection .orderHeader .headerCell .cellTitle {
   color: rgb(217, 217, 217);
+  font-weight: bold;
 }
 .orderSection .orderHeader .headerCell .cellValue {
   font-weight: 600;
@@ -12238,6 +12248,7 @@ header {
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
+  padding: 1rem;
 }
 .orderSection .orderBody .productList {
   display: flex;
@@ -12561,6 +12572,17 @@ header {
   background-color: rgb(102, 66, 36);
 }
 
+.customComboBox .menu {
+  background-color: rgb(90, 114, 75);
+  color: whitesmoke;
+}
+.customComboBox .menu .item {
+  color: whitesmoke;
+}
+.customComboBox .menu .item:hover {
+  background: rgb(128, 154, 111);
+}
+
 .tabs {
   height: 100%;
 }
@@ -12575,8 +12597,14 @@ header {
   flex-direction: column;
   height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+}
+.adminProducts .productContainer {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.adminProducts .pagination {
+  margin: 2rem;
 }
 .adminProducts .productRow {
   color: rgb(217, 217, 217);
@@ -12630,11 +12658,28 @@ header {
 }
 .editProduct .detailsContainer {
   margin: 0.5rem;
+  /* Chrome, Safari, Edge, Opera */
+  /* Firefox */
 }
 .editProduct .detailsContainer .label {
   margin-block: 0.2rem;
   font-weight: bold;
   color: #543504;
+}
+.editProduct .detailsContainer input,
+.editProduct .detailsContainer textarea {
+  background: rgb(102, 66, 36);
+  color: white;
+  margin-inline: 0.5rem;
+  border-color: rgb(90, 114, 75);
+}
+.editProduct .detailsContainer input::-webkit-outer-spin-button,
+.editProduct .detailsContainer input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.editProduct .detailsContainer input[type=number] {
+  -moz-appearance: textfield;
 }
 .editProduct .saveButtonContainer {
   display: flex;

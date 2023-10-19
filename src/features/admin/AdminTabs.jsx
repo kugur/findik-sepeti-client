@@ -16,15 +16,6 @@ const AdminTabs = function () {
           </div>
         );
       }
-      
-      function Tab2Content() {
-        return (
-          <div className="flex-grow-1">
-            <h1>Tab 2 Content</h1>
-            <p>This is the content for Tab 2.</p>
-          </div>
-        );
-      }
 
       return (
         <Tab.Container id="left-tabs-example" defaultActiveKey="products" >
@@ -40,9 +31,6 @@ const AdminTabs = function () {
                 <Nav.Item>
                   <Nav.Link eventKey="orders">Siparisler</Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="stock">Stoklar</Nav.Link>
-                </Nav.Item>
               </Nav>
             </Col>
             <Col sm={9}>
@@ -55,9 +43,6 @@ const AdminTabs = function () {
                 </Tab.Pane>
                 <Tab.Pane eventKey="orders">
                  <Orders></Orders>
-                </Tab.Pane>
-                <Tab.Pane eventKey="stock">
-                  <Tab2Content/>
                 </Tab.Pane>
               </Tab.Content>
             </Col>

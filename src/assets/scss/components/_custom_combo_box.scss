@@ -1,0 +1,23 @@
+@use "/src/assets/scss/abstracts/variables" as variables;
+
+.customComboBox {
+    
+
+    .toggle {
+    }
+    .menu {
+        background-color: variables.$thirdary;
+        color: whitesmoke;
+    
+        .item {
+            color: whitesmoke;
+            &:hover {
+                background: variables.$secondary;
+            }
+            
+        }
+    }
+
+
+
+}

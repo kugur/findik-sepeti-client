@@ -5,13 +5,15 @@ import { UserButton } from "./UserButton";
 import { UserContext } from "app/UserProvider";
 import { Toaster } from "./Common/Toaster";
 
-import { Input } from "@mui/icons-material";
-import { useCarts } from "features/cart/CartContext";
+import { Input, Shop } from "@mui/icons-material";
+import { useCarts, actions, useCartsDispatch } from "features/cart/CartContext";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export const TopNavigation = memo((data) => {
   const navigate = useNavigate();
   const { user, logout } = useContext(UserContext);
   const carts = useCarts();
+  const cartsDispatch = useCartsDispatch();
   const cartsItemCount =
     carts !== null && Array.isArray(carts) ? carts.length : 0;
 
@@ -32,26 +34,20 @@ export const TopNavigation = memo((data) => {
           id="navbarScroll"
           className="justify-content-md-center"
         >
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="processedNuts">
-              Islenmis Findik
-            </Nav.Link>
-            <Nav.Link onClick={() => Toaster.info("Deneme toast")}>
-              Islenmemis Findik
-            </Nav.Link>
-          </Nav>
+          <Nav className="me-auto"></Nav>
         </Navbar.Collapse>
         <Stack direction="horizontal" gap={1} className="m-2">
-          <UserButton userInfo={user} onLogout={logout}></UserButton>
-          {/* <Button variant="outline-secondary" onClick={e => navigate('/login')}> {userInfo ? userInfo.email : 'Log in'}</Button> */}
-          <Button variant="secondary" onClick={() => handleCartClick()}>
-            Sepet-ekle
-            <Badge pill>{cartsItemCount}</Badge>
-          </Button>
-          <div>{JSON.stringify(carts)}</div>
+          <UserButton userInfo={user} onLogout={() => {
+            logout();
+            cartsDispatch({
+              type: actions.initilize,
+              cartItems: []
+            })}
+            }></UserButton>
+            <Badge className="shoppingCart" >
+            <ShoppingCartIcon  onClick={() => handleCartClick()}></ShoppingCartIcon>
+            {cartsItemCount}</Badge>
+      
         </Stack>
       </Container>
     </Navbar>

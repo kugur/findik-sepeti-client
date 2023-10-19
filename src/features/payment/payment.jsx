@@ -12,6 +12,7 @@ import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { Toaster } from "components/Common/Toaster";
+import { TopNavigation } from "components/topNavigationBar";
 
 const Payment = function () {
   const navigate = useNavigate();
@@ -87,7 +88,6 @@ const Payment = function () {
     <Form noValidate onSubmit={handleSubmit}>
       <fieldset>
         <label>Teslimat Bilgili</label>
-        {JSON.stringify(carts)}
         <div className="deliveryGroup">
           <Form.Group className="customerGroup" controlId="address">
             <Form.Label>Teslimat Adresi</Form.Label>
@@ -168,7 +168,6 @@ const Payment = function () {
           <div className="value"> {total}</div>
         </div>
         <div className="paymentRow buttonContainer">
-          {JSON.stringify(user)}
           <Button type="submit">Siparisi Tamamla</Button>
         </div>
       </div>
@@ -177,6 +176,7 @@ const Payment = function () {
 
   return (
     <>
+    <TopNavigation></TopNavigation>
       <h1>Payment Sayfasi</h1>
       <Container className="payment">
         <Formik

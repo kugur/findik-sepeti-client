@@ -33,7 +33,7 @@ const ComboBox = function ({ value, onChange, url, defaultItems=[]}) {
     ? loadingItem
     : items.map((item) => {
         return (
-          <Dropdown.Item id={item.id} key={item.id} onClick={(e) =>{
+          <Dropdown.Item className="item" id={item.id} key={item.id} onClick={(e) =>{
             e.preventDefault();
             handleItemClick(e.target.id);
           }}>
@@ -44,12 +44,12 @@ const ComboBox = function ({ value, onChange, url, defaultItems=[]}) {
 
   console.log("items:: {}", JSON.stringify(items));
   return (
-    <Dropdown onClick={() => fetchData()}>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+    <Dropdown className="customComboBox" onClick={() => fetchData()}>
+      <Dropdown.Toggle className="toggle" id="dropdown-basic">
         {value}
       </Dropdown.Toggle>
 
-      <Dropdown.Menu>{itemList}</Dropdown.Menu>
+      <Dropdown.Menu className="menu">{itemList}</Dropdown.Menu>
     </Dropdown>
   );
 };

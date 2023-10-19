@@ -23,12 +23,14 @@
 
  .orderSection {
       margin-top: 2em;
-      border: solid;
+      color: variables.$font-color-light;
+      border: 0.2rem solid variables.$primary;
+      border-radius: 10px;
 
       .orderHeader {
         height: 40%;
         background-color: variables.$primary;
-        border-bottom: double;
+        // border-bottom: double;
         display: grid;
         grid-template-columns: auto auto auto auto;
         width: 100%;
@@ -38,6 +40,7 @@
         .headerCell {
           .cellTitle {
             color: variables.$font-color-light;
+            font-weight: bold;
           }
 
           .cellValue {
@@ -52,6 +55,7 @@
         display: inline-flex;
         width: 100%;
         justify-content: space-between;
+        padding: 1rem;
 
         .productList {
             display: flex;

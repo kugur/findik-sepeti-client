@@ -30,7 +30,6 @@ function ProductTemplate({ data, setValue, onSubmit, errorMessage }) {
 
   return (
     <Container className="editProduct">
-      <Row>{JSON.stringify(data)}</Row>
       <Row className="">
         <Col className="imageContainer">
           <Row className="imageWrapper">
@@ -79,11 +78,6 @@ function ProductTemplate({ data, setValue, onSubmit, errorMessage }) {
               onChange={(category) => setValue("category", category)}
               url={"category"}
             ></ComboBox>
-            {/* <input
-              id="category"
-              onChange={(e) => setCategory(e.target.value)}
-              value={data.category.name}
-            ></input> */}
           </Row>
           <Row>
             <label className="label" htmlFor="price">
