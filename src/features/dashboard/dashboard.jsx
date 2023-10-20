@@ -7,22 +7,33 @@ import { Footer } from "../../layouts/Footer";
 import { Header } from "../../layouts/Header";
 import UpButton from "../../components/UpButton";
 import CardFilter from "components/CardFilter";
-import { filterItems, orderItems } from "constants/CardFilters";
+import { orderItems } from "constants/CardFilters";
 import { createFilterParam, createSortParam } from "helpers/FilterUtil";
+import { ComboBox } from "components/ComboBox";
 
 export const Dashboard = () => {
   console.log("[Dashboard] intializing");
   const location = useLocation();
   const userInfo = location.state && location.state.userInfo;
   const cardContainerRef = useRef(null);
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const defultSelectedFilter = {id: "all", name: "Hepsi", emptyFilter: true};
+  const [selectedFilter, setSelectedFilter] = useState(defultSelectedFilter);
   const [selectedOrder, setSelectedOrder] = useState("id");
-  
-  const filterValue = useMemo(() => createFilterParam(filterItems[selectedFilter]), [selectedFilter]);
+
+  const filterValue = useMemo(
+    () =>
+      createFilterParam({
+        name: "category",
+        operation: "EQUAL",
+        value: selectedFilter.name,
+        emptyFilter: selectedFilter.emptyFilter
+      }),
+    [selectedFilter.name, selectedFilter.emptyFilter]
+  );
   const sortValue = createSortParam(orderItems[selectedOrder]);
-  
-  const onFilterSelect = (eventKey, event) => {
-    setSelectedFilter(eventKey);
+
+  const onFilterSelect = (filter) => {
+    setSelectedFilter(filter);
   };
 
   const onOrderSelect = (eventKey, event) => {
@@ -37,11 +48,13 @@ export const Dashboard = () => {
 
       <section className="py-5 dashboardSection">
         <Container className="customCardFilterContainer px-4 px-lg-5">
-          <CardFilter
-            selectedValue={selectedFilter}
-            onSelect={onFilterSelect}
-            items={filterItems}
-          ></CardFilter>
+          <ComboBox
+            value={selectedFilter.name}
+            onChange={onFilterSelect}
+            url={"category"}
+            defaultItems={[defultSelectedFilter]}
+          ></ComboBox>
+
           <CardFilter
             selectedValue={selectedOrder}
             onSelect={onOrderSelect}
@@ -50,7 +63,7 @@ export const Dashboard = () => {
         </Container>
         <Container className="container px-4 px-lg-5 mt-5 dashboardElements">
           <CardContainer
-            key={selectedFilter+selectedOrder}
+            key={selectedFilter + selectedOrder}
             filters={filterValue}
             order={sortValue}
             ref={cardContainerRef}

@@ -12,10 +12,6 @@ function ProductTemplate({ data, setValue, onSubmit, errorMessage }) {
     setValue("imageFile", imageFile);
   };
 
-  const setCategory = function (value) {
-    setValue("category", { ...data.category, name: value });
-  };
-
   const navigate = useNavigate();
 
   if (errorMessage) {

@@ -1,0 +1,30 @@
+.customGPlusSignIn {
+  background: #c0ca81;
+  color: #444;
+  width: 140px;
+  height: 50px;
+  border-radius: 5px;
+  border: thin solid #888;
+  white-space: nowrap;
+  display: inline-block;
+  padding-inline: 1rem;
+
+  .icon {
+    padding: 12px 5px 0px 0px;
+    display: inline-block;
+  }
+
+  .buttonText {
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: top;
+    padding-top: 10px;
+    display: inline-block;
+  }
+}
+
+.googleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0.4rem;
+}

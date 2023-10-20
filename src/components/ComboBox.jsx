@@ -7,13 +7,13 @@ const ComboBox = function ({ value, onChange, url, defaultItems=[]}) {
   const [loading, setLoading] = useState(false);
 
   const fetchData = function () {
-    if (items.length > 0) return;
+    if (items.length > defaultItems.length) return;
 
     setLoading(true);
     httpClientWrapper.get(
       url,
       function (response) {
-        setItems(response);
+        setItems(items => [...items, ...response]);
         setLoading(false);
       },
       function (error) {

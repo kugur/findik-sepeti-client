@@ -1,14 +1,11 @@
 import { TopNavigation } from "components/topNavigationBar";
 import { Order } from "./Order";
 import { Footer } from "layouts/Footer";
-import { Fragment, React, useEffect, useState } from "react";
-import findikImage from "assets/imgs/deneme.jpg";
-import { Button } from "react-bootstrap";
+import { Fragment, React } from "react";
 import { useInfinityScrollFetchData } from "app/hooks/dataFetchingHooks";
-import httpClientWrapper from "components/Common/HttpClientWrapper";
 
-export const Orders = (params) => {
-  const [inProgress, orders] = useInfinityScrollFetchData(
+export const Orders = () => {
+  const [inprogress, orders] = useInfinityScrollFetchData(
     "/order",
     5,
     "DESC,id",
@@ -22,6 +19,8 @@ export const Orders = (params) => {
   ) : (
     <></>
   );
+
+  if (inprogress) return (<div> Loadding...</div>)
   return (
     <Fragment>
       <div className="orderContainer">

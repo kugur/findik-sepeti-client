@@ -1,11 +1,8 @@
 import { React, useContext, memo } from "react";
-import { Navbar, Container, Nav, Stack, Button, Badge } from "react-bootstrap";
+import { Navbar, Container, Nav, Stack, Badge } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { UserButton } from "./UserButton";
 import { UserContext } from "app/UserProvider";
-import { Toaster } from "./Common/Toaster";
-
-import { Input, Shop } from "@mui/icons-material";
 import { useCarts, actions, useCartsDispatch } from "features/cart/CartContext";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 

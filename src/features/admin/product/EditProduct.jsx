@@ -1,15 +1,13 @@
 import { useFetchDataById } from "app/hooks/dataFetchingHooks";
-import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ProductTemplate } from "./ProductTemplate";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 import { Toaster } from "components/Common/Toaster";
 
-const EditProduct = function (props) {
+const EditProduct = function () {
   const { productId } = useParams();
   const navigate = useNavigate();
   const [data, setData, isFetching] = useFetchDataById("/products/", productId);
-  const [errorMessage, setErrorMessage] = useState();
   const setValue = function (key, value) {
     setData({
       ...data,

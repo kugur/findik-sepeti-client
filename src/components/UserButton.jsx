@@ -6,13 +6,13 @@ export const UserButton = (data) => {
 
     if (!data || !data.userInfo || !data.userInfo.email) {
         return <Button onClick={e => navigate('/login')}>
-            Log in
+            Giriş
         </Button>
     } else {
         return <DropdownButton id="user-dropdown-button" title={data.userInfo.email}>
             <Dropdown.Item as={Link}  to="/users">Kisisel Bilgiler</Dropdown.Item>
             <Dropdown.Item as={Link} to="/orders">Siparisler</Dropdown.Item>
-            <Dropdown.Item onClick={data.onLogout}>Log out</Dropdown.Item>
+            <Dropdown.Item onClick={data.onLogout}>Çıkış Yap</Dropdown.Item>
         </DropdownButton>
     }
 

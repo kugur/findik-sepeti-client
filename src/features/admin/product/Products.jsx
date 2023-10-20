@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFetchData } from "app/hooks/dataFetchingHooks";
 import { PaginationButtons } from "components/Pagination/Pagination";
 import { Img } from "components/Img";
 import httpClientWrapper from "components/Common/HttpClientWrapper";
 
-function Prodcuts(props) {
+function Prodcuts() {
   console.log("[Products] called.");
   const [pageNumber, setPageNumber] = useState(0);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function Prodcuts(props) {
   const handleDelete = (id) => {
     httpClientWrapper.delete(
       "/products/" + id,
-      function (response) {
+      function () {
         console.log("Deleted product successfully id: " + id);
         reFetch();
       },

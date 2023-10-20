@@ -33,7 +33,7 @@ const Orders = function () {
   const setOrderValue = function (orderId, key, value) {
     setOrders((orders) =>
       orders.map((order) => {
-        if (order.id == orderId) {
+        if (order.id === orderId) {
           let updatedOrder = { ...order };
           updatedOrder[key] = value;
           return updatedOrder;
@@ -98,6 +98,8 @@ const Orders = function () {
       </OrderTemplate>
     );
   });
+
+  if(inProgress) return (<div>Loading...</div>)
   return (
     <div className="orderContainer">
       <>

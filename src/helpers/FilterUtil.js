@@ -1,5 +1,5 @@
 export const createFilterParam = function(filterItem, otherFilters = []) {
-    if (filterItem && filterItem.name && filterItem.operation ) {
+    if (filterItem && filterItem.name && filterItem.operation && !filterItem.emptyFilter ) {
         return [...otherFilters,
             {
                 name: filterItem.name,

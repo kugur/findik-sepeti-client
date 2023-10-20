@@ -11,6 +11,8 @@
        color: variables.$primary;
        font-weight: bolder;
        font-size: x-large;
+       text-shadow: -1px -1px 0 #195714, 1px -1px 0 #337525, -1px 1px 0 #13260b, 1px 1px 0 #000;
+        font-size: 2rem;
    }   
 
    .nav-link {
