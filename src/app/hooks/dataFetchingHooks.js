@@ -100,7 +100,7 @@ const useFetchData = function (url, pageSize, pageNumber, pageSort) {
     };
   }, [url, pageSize, pageNumber, pageSort, fetchFlip]);
 
-  return [data, pageModel, reFetch];
+  return [data, pageModel, reFetch, isFetching];
 };
 
 const useInfinityScrollFetchData = function (url, pageSize, pageSort, filters) {

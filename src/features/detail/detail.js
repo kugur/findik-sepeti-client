@@ -1,20 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import findikBackground from "assets/imgs/deneme.jpg";
+
 import { TopNavigation } from "../../components/topNavigationBar";
 import { Footer } from "../../layouts/Footer";
 import { NumberInput } from "components/NumberInput";
-import httpClientWrapper from "components/Common/HttpClientWrapper";
-import { Logger } from "sass";
 import { useFetchDataById } from "app/hooks/dataFetchingHooks";
 import { Img } from "components/Img";
 import { useCartsDispatch, actions } from "features/cart/CartContext";
 
-export const Detail = (params) => {
+export const Detail = () => {
   const { id } = useParams();
   const [productCount, setProductCount] = useState(1);
-  const [product, setData, isFetching] = useFetchDataById("products/", id);
+  const [product,, isFetching] = useFetchDataById("products/", id);
   const cartDispatch = useCartsDispatch();
 
   const onProductCountChange = function (count) {

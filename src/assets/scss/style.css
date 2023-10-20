@@ -12084,7 +12084,6 @@ textarea.form-control-lg {
 
 .dashboardSection {
   background-color: rgb(128, 154, 111);
-  height: 100%;
   padding: 1rem;
 }
 
@@ -12178,6 +12177,7 @@ header {
 }
 
 .customerAccount {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

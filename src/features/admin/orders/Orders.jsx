@@ -99,7 +99,6 @@ const Orders = function () {
     );
   });
 
-  if(inProgress) return (<div>Loading...</div>)
   return (
     <div className="orderContainer">
       <>

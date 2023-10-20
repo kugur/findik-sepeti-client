@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Img } from "components/Img";
-import { red } from "@mui/material/colors";
 import { useCartsDispatch, actions } from "./CartContext";
 
 const CartItem = function ({ cartItem }) {
