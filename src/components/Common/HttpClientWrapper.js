@@ -4,7 +4,7 @@ import tokenStore from "app/tokenStore";
 const instance = axios.create({
   baseURL: "http://" + process.env.REACT_APP_SERVER_URL,
   headers: {
-    "Access-Control-Allow-Origin": "localhost:8080, localhost:3000",
+    "Access-Control-Allow-Origin": "localhost:8080, 172.18.0.1:8080, 172.17.0.1:8080, 192.168.65.4:8080, localhost:3000, localhost:3000, 172.18.0.1:3000, 172.17.0.1:3000, 192.168.65.4:3000",
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH",
     "Access-Control-Allow-Headers":
       "Content-Type, Content-Length, Accept, Authorization, X-Requested-With",
